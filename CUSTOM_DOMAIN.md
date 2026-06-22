@@ -6,7 +6,7 @@ GitHub公式ドキュメント（docs.github.com）と Xserver公式マニュア
 - **リポジトリ**: `smakouba-site`（main / root から配信）
 - **独自ドメイン**: `sumakouba.com`（apex＝ルートドメイン／取得済み）
 - **主ドメイン（ブランドURL）**: **`www.sumakouba.com`**（GitHub推奨・最も安定）。apex `sumakouba.com` は `www` へ自動リダイレクト。
-- **DNS管理**: Xserver（ネームサーバーが `ns1〜ns5.xserver.jp` の前提）
+- **DNS管理**: Xserver（**ドメインのみ取得・レンタルサーバー未契約**）。ネームサーバーは初期設定の `ns1〜3.xdomain.ne.jp` のまま。DNSレコードは **Xserverアカウントの「DNS設定（DNSレコード設定）」** で編集する（サーバーパネルではない）。
 
 > **重要な順序**：GitHub公式は「DNSを設定する前に、まずGitHub側に独自ドメインを追加せよ」と案内しています（第三者によるサブドメイン乗っ取り防止のため）。これを安全に満たすため、本手順では **先にドメイン所有権検証（TXT）を済ませてから** DNS→Pages設定の順に進めます。検証を先にやると乗っ取りリスクが消えるので、DNSを先に入れても安全で、かつ現行URLのダウンタイムも避けられます。
 
@@ -35,19 +35,19 @@ GitHub公式ドキュメント（docs.github.com）と Xserver公式マニュア
 
 ## 手順
 
-### 1. ドメインを取得（Xserver）
-`sumakouba.com` をXserverで取得。Xserverで取得すればネームサーバーは自動で `ns1〜ns5.xserver.jp` になります（他社管理の場合のみ、Xserverのネームサーバーへ変更。反映最大24時間）。
+### 1. ドメインを取得（Xserver）→ 完了済み
+`sumakouba.com` は取得済み。ネームサーバーは初期設定 `ns1〜3.xdomain.ne.jp`。**このまま変更不要**（Xserverアカウントの「DNS設定」で xdomain.ne.jp のゾーンに直接レコードを追加できる）。
 
 ### 2. GitHubでドメイン所有権検証を開始（TXT値を取得）
 1. GitHub右上 → **Settings**（アカウント設定） → 左メニュー **Pages** → **Add a domain**。
 2. `sumakouba.com` を入力すると、`_github-pages-challenge-tyasuda1028` という名前のTXTレコードと**検証コード**が表示される。これを控える。
 
-### 3. XserverでDNSレコードを設定
-1. [サーバーパネル](https://secure.xserver.ne.jp/xapanel/login/xserver/server/)にログイン → **ドメイン** 欄の **DNSレコード設定** → `sumakouba.com` を選択。
-2. **既定レコードの掃除**：Xserverが自動登録した apex・`www`・ワイルドカード `*` の **Aレコード（XserverサーバーIP向け）を削除**。
-   - メールをXserverで使う予定がなければ、そのまま不要なAレコードのみ削除でOK。
-   - `NS` レコードは残す。Xserverメールを使う場合のみ `MX`・SPFの `TXT` も残す。
-3. 上の表のレコードを **DNSレコード設定の追加** から登録（A×4、AAAA×4、www CNAME×1、検証TXT×1）。apexはホスト名を空欄に。
+### 3. XserverでDNSレコードを設定（ドメインのみ＝Xserverアカウント）
+1. [Xserverアカウント](https://secure.xserver.ne.jp/xapanel/login/xserver/)にログイン（※サーバーパネルではない）。
+2. **ドメイン** 一覧から `sumakouba.com` → **DNS設定 / DNSレコード設定** を開く（「DNSレコード設定の追加」タブ）。
+3. **既定レコードの掃除**：初期登録されている apex・`www`・ワイルドカード `*` の **Aレコード**があれば削除（GitHubのIPに付け替えるため）。`NS`/`SOA` は残す。メールを別途使う予定がなければ `MX`・SPFの `TXT` は無くても可。
+4. 上の表のレコードを追加（A×4、AAAA×4、www CNAME×1、検証TXT×1）。**apexはホスト名を空欄**にする。各入力後「確認画面へ進む」→「追加する」。
+   - 既存ドメインのDNS編集なので操作は慎重に。値はコピペ推奨。
 
 ### 4. 伝播を待って dig で確認（最大24時間／通常は数時間）
 ```bash
