@@ -330,6 +330,91 @@ img { max-width: 100%; display: block; }
 .why-item h3 { font-size: 17px; font-weight: 800; margin: 0 0 8px; }
 .why-item p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
+/* ===== Challenges (pain) ===== */
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.pain-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid #f59e0b;
+  border-radius: 14px;
+  padding: 22px 22px 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+.pain-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #ea580c;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.pain-card h3 { font-size: 16px; font-weight: 800; margin: 0 0 8px; color: var(--ink); }
+.pain-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.8; }
+.pain-bridge {
+  max-width: 820px;
+  margin: 32px auto 0;
+  background: var(--bg-tint);
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 26px 28px;
+  text-align: center;
+}
+.pain-bridge p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.9; }
+.pain-bridge strong { color: var(--blue); font-weight: 800; }
+
+/* ===== Founder message ===== */
+.founder-box {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #f8fafc, #eef4ff);
+  border: 1px solid #e0e7ff;
+  border-radius: 24px;
+  padding: 48px 44px 40px;
+  overflow: hidden;
+}
+.founder-quote {
+  position: absolute;
+  top: 6px; left: 26px;
+  font-size: 110px;
+  line-height: 1;
+  font-family: Georgia, serif;
+  color: var(--indigo);
+  opacity: .14;
+  pointer-events: none;
+}
+.founder-box .section-eyebrow { position: relative; }
+.founder-box h2 {
+  position: relative;
+  font-size: clamp(20px, 3vw, 27px);
+  font-weight: 900;
+  margin: 0 0 24px;
+}
+.founder-body p {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.founder-body p:last-child { margin-bottom: 0; }
+.founder-sign {
+  margin: 26px 0 0;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
 /* ===== Pricing (per app) ===== */
 .pricing-apps {
   display: grid;
@@ -555,6 +640,10 @@ img { max-width: 100%; display: block; }
   .hero-inner { padding: 64px 24px 60px; }
   .section { padding: 64px 0; }
   .pricing-apps { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .pain-grid { grid-template-columns: 1fr; max-width: 460px; }
+  .founder-box { padding: 36px 22px 30px; }
+  .founder-quote { font-size: 84px; left: 14px; }
+  .founder-sign { text-align: left; }
   .cta-grid { grid-template-columns: 1fr; }
   .cta-box { padding: 44px 24px; }
   .company-table > div { grid-template-columns: 1fr; }
