@@ -9,7 +9,7 @@
 
 | アプリ | 概要 | URL |
 |---|---|---|
-| スマコウバ積載 | トラック積載の計画・可視化・指示 | https://smakouba-truck-loader.vercel.app |
+| スマコウバ積載 | トラック積載の計画・可視化・指示 | https://sumakouba-truck-loader.vercel.app |
 | スマコウバ計画 | 生産計画・所要量（MRP）・在庫の見える化 | https://sumakouba-production-plan.vercel.app |
 | スマコウバ負荷 | 設備負荷・必要人員の自動計算、日報・品質管理 | https://sumakouba-production-load-calc.vercel.app |
 
