@@ -216,50 +216,81 @@
         <div class="section-head">
           <p class="section-eyebrow">PRICING</p>
           <h2>料金プラン</h2>
-          <p class="section-sub">法人向けの月額・年額プラン。まずは無料でお試しいただけます。</p>
+          <p class="section-sub">料金はアプリごとに異なります。各アプリ単位でご契約いただけます（法人向け・月額／年額）。</p>
         </div>
 
-        <div class="pricing-grid">
-          <div class="price-card highlight">
-            <span class="price-badge">おすすめ</span>
-            <h3>スタンダード</h3>
-            <p class="price-target">単一工場・現場の業務をしっかり見える化</p>
-            <div class="price">
-              <span class="price-amount">¥19,800</span>
-              <span class="price-unit">／月（税別）</span>
-            </div>
-            <p class="price-year">年額 ¥198,000（約2ヶ月分お得）</p>
-            <ul class="feature-list">
-              <li>各アプリ・1拠点／ユーザー数無制限</li>
-              <li>対象アプリの全機能を利用可</li>
-              <li>PDFレポート・CSV／JSON入出力</li>
-              <li>メールでのサポート</li>
+        <div class="pricing-apps">
+          <!-- 積載 -->
+          <div class="price-app accent-blue">
+            <h3>スマコウバ積載</h3>
+            <ul class="tier-list">
+              <li class="tier">
+                <div class="tier-top"><span class="tier-name">スタンダード</span><span class="tier-price">¥19,800<small>／月</small></span></div>
+                <p class="tier-sub">年額 ¥198,000 ／ 1〜数拠点の中小事業所向け</p>
+              </li>
+              <li class="tier is-rec">
+                <div class="tier-top"><span class="tier-name">ビジネス<em>おすすめ</em></span><span class="tier-price">¥39,800<small>／月</small></span></div>
+                <p class="tier-sub">年額 ¥398,000 ／ 複数拠点・多担当の本格運用向け</p>
+              </li>
+              <li class="tier">
+                <div class="tier-top"><span class="tier-name">エンタープライズ</span><span class="tier-price">¥79,800<small>〜／月</small></span></div>
+                <p class="tier-sub">年額・個別見積 ／ 大規模・カスタマイズ要望のある企業向け</p>
+              </li>
             </ul>
-            <a class="btn btn-primary btn-block" href="#contact">お問い合わせ・お申し込み</a>
+            <div class="price-app-actions">
+              <a class="btn btn-sm btn-primary" href="https://sumakouba-truck-loader.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
+              <a class="btn btn-sm btn-line" href="https://sumakouba-truck-loader.vercel.app/support" target="_blank" rel="noopener">お問い合わせ</a>
+            </div>
           </div>
 
-          <div class="price-card">
-            <h3>マルチ拠点／エンタープライズ</h3>
-            <p class="price-target">複数工場・全社展開・3アプリ一括導入・導入伴走</p>
-            <div class="price">
-              <span class="price-amount price-quote">個別見積</span>
-            </div>
-            <p class="price-year">要件に合わせてお見積りします</p>
-            <ul class="feature-list">
-              <li>拠点数無制限</li>
-              <li>スタンダードの全機能</li>
-              <li>導入・運用のサポート（伴走）</li>
-              <li>個別要件のご相談</li>
+          <!-- 計画 -->
+          <div class="price-app accent-indigo">
+            <h3>スマコウバ計画</h3>
+            <ul class="tier-list">
+              <li class="tier">
+                <div class="tier-top"><span class="tier-name">スタンダード</span><span class="tier-price">¥19,800<small>／月</small></span></div>
+                <p class="tier-sub">年額 ¥198,000 ／ 単一工場・10〜50名／Excel脱却の第一歩</p>
+              </li>
+              <li class="tier is-rec">
+                <div class="tier-top"><span class="tier-name">ビジネス<em>おすすめ</em></span><span class="tier-price">¥39,800<small>／月</small></span></div>
+                <p class="tier-sub">年額 ¥398,000 ／ 複数ライン・30〜150名／欠品を事前に回避</p>
+              </li>
+              <li class="tier">
+                <div class="tier-top"><span class="tier-name">エンタープライズ＋コンサル</span><span class="tier-price">¥79,800<small>〜／月</small></span></div>
+                <p class="tier-sub">個別見積 ／ 多拠点・計画高度化に伴走が必要な企業</p>
+              </li>
             </ul>
-            <a class="btn btn-line btn-block" href="#contact">お問い合わせ</a>
+            <div class="price-app-actions">
+              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-plan.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
+              <a class="btn btn-sm btn-line" href="https://sumakouba-production-plan.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
+            </div>
+          </div>
+
+          <!-- 負荷 -->
+          <div class="price-app accent-cyan">
+            <h3>スマコウバ負荷</h3>
+            <ul class="tier-list">
+              <li class="tier is-rec">
+                <div class="tier-top"><span class="tier-name">スタンダード<em>おすすめ</em></span><span class="tier-price">¥19,800<small>／月</small></span></div>
+                <p class="tier-sub">年額 ¥198,000 ／ 単一工場・現場の工数と要員を見える化</p>
+              </li>
+              <li class="tier">
+                <div class="tier-top"><span class="tier-name">マルチ拠点／エンタープライズ</span><span class="tier-price">個別見積</span></div>
+                <p class="tier-sub">複数工場・全社展開・導入伴走が必要な企業</p>
+              </li>
+            </ul>
+            <div class="price-app-actions">
+              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-load-calc.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
+              <a class="btn btn-sm btn-line" href="https://sumakouba-production-load-calc.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
+            </div>
           </div>
         </div>
 
         <div class="pricing-note">
-          <p>・お支払いは<strong>請求書／口座振替</strong>など（法人向け）。適格請求書（インボイス）に対応予定です。</p>
-          <p>・3アプリまとめての導入・マルチ拠点は個別にお見積りします。</p>
+          <p>・各アプリとも、まずは<strong>無料でお試し</strong>いただけます（クレジットカード不要・30日間の無料トライアルをご用意）。</p>
+          <p>・お支払いは<strong>請求書／銀行振込</strong>など（法人向け）。適格請求書（インボイス）に対応予定です。</p>
           <p>・<strong>IT導入補助金</strong>の活用もご相談いただけます。導入費（オンボーディング）はプランに応じて別途。</p>
-          <p class="pricing-note-fine">※ 価格はすべて税別。各アプリの最新の料金は、各アプリ内の料金ページをご確認ください。</p>
+          <p class="pricing-note-fine">※ 価格はすべて税別。年額は月額の約10ヶ月分（2ヶ月分お得）。最新の料金・全機能は各アプリの料金ページをご確認ください。</p>
         </div>
       </div>
     </section>
