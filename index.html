@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スマコウバ｜中小製造業のための現場アプリ（積載・計画・負荷）</title>
+  <meta name="description" content="スマコウバは、トラック積載・生産計画・設備負荷を見える化する中小製造業向けの現場アプリシリーズです。スマホ・タブレットですぐ使えて、まずは無料でお試しいただけます。運営：スマコウバ運営事務局。" />
+  <meta name="theme-color" content="#3b82f6" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="スマコウバ｜中小製造業のための現場アプリ" />
+  <meta property="og:description" content="トラック積載・生産計画・設備負荷を見える化。町工場の現場をデータで支える3つのアプリ。" />
+  <meta property="og:site_name" content="スマコウバ" />
+  <meta property="og:locale" content="ja_JP" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="スマコウバ ホーム">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="36" height="36" role="img">
+            <defs>
+              <linearGradient id="hdr-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#6366f1" />
+                <stop offset="0.5" stop-color="#3b82f6" />
+                <stop offset="1" stop-color="#06b6d4" />
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" rx="24" fill="url(#hdr-grad)" />
+            <text x="47" y="72" text-anchor="middle" fill="#fff" font-size="68" font-weight="900" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">ス</text>
+          </svg>
+        </span>
+        <span class="brand-name">スマコウバ</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#products">製品</a>
+        <a href="#features">特長</a>
+        <a href="#pricing">料金</a>
+        <a href="#company">会社情報</a>
+        <a href="#contact" class="nav-cta">お問い合わせ</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">中小製造業のための現場アプリ</p>
+        <h1>町工場の「勘と経験」を、<br />データで支える。</h1>
+        <p class="lead">
+          スマコウバは、<strong>トラック積載・生産計画・設備負荷</strong>を見える化する
+          中小製造業向けの現場アプリシリーズです。<br class="pc-only" />
+          スマホ・タブレットですぐ使えて、まずは無料でお試しいただけます。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">3つの製品を見る</a>
+          <a class="btn btn-ghost" href="#pricing">料金を見る</a>
+        </div>
+        <ul class="hero-badges">
+          <li>登録のみ・クレカ不要で無料</li>
+          <li>オフライン対応</li>
+          <li>IT導入補助金の相談可</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Products ===== -->
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">PRODUCTS</p>
+          <h2>3つのアプリで、現場の数字を動かす</h2>
+          <p class="section-sub">単体でも、組み合わせても。現場の困りごとに合わせて選べます。</p>
+        </div>
+
+        <div class="product-grid">
+          <!-- 積載 -->
+          <article class="product-card accent-blue">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 3h13v10H1z" /><path d="M14 7h4l3 3v3h-7z" /><circle cx="5.5" cy="17" r="2" /><circle cx="17.5" cy="17" r="2" />
+              </svg>
+            </div>
+            <h3>スマコウバ積載</h3>
+            <p class="product-tag">トラック積載の計画・可視化・指示</p>
+            <p class="product-desc">
+              週間の生産数と拠点別の在庫から、どのトラックに何をどう積むかを自動算出。
+              荷台レイアウト図と積込チェックリストをPDFでドライバーへ共有できます。
+            </p>
+            <ul class="feature-list">
+              <li>トラック積載の自動算出（必要台数・車種）</li>
+              <li>荷台レイアウトの可視化（2段積み対応）</li>
+              <li>積込チェックリストをPDF・印刷</li>
+              <li>バーコード／QRで積込確認・誤積み防止</li>
+              <li>オフライン対応・複数端末で同期</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-sm btn-primary" href="https://smakouba-truck-loader.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
+              <a class="btn btn-sm btn-line" href="https://smakouba-truck-loader.vercel.app/support" target="_blank" rel="noopener">お問い合わせ</a>
+            </div>
+          </article>
+
+          <!-- 計画 -->
+          <article class="product-card accent-indigo">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="17" rx="2" /><path d="M3 9h18M8 2v4M16 2v4" /><path d="M7 14l2.5 2.5L14 12" />
+              </svg>
+            </div>
+            <h3>スマコウバ計画</h3>
+            <p class="product-tag">生産計画・所要量・在庫の見える化</p>
+            <p class="product-desc">
+              品目・図番マスタをもとに、月次の生産計画と資材所要量（MRP）を自動で組み立て。
+              在庫月数や平準化までシミュレーションし、ムリ・ムダのない計画づくりを支えます。
+            </p>
+            <ul class="feature-list">
+              <li>生産計画の立案・平準化（レベリング）</li>
+              <li>資材所要量計算（MRP）</li>
+              <li>在庫月数の見える化（不足・過剰アラート）</li>
+              <li>月次計画・シミュレーション</li>
+              <li>マスタ管理・CSVで入出力</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
+              <a class="btn btn-sm btn-line" href="https://sumakouba-production-plan.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
+            </div>
+          </article>
+
+          <!-- 負荷 -->
+          <article class="product-card accent-cyan">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21a9 9 0 1 1 9-9" /><path d="M12 12l4-2.5" /><path d="M3.5 12H6M18 12h2.5M12 5.5V7" />
+              </svg>
+            </div>
+            <h3>スマコウバ負荷</h3>
+            <p class="product-tag">設備と人の工数を見える化</p>
+            <p class="product-desc">
+              図番・MCT・可動率から設備負荷と必要人員を自動計算。生産管理板（日報）で
+              可動率・不良率を見える化し、AIが日程と人員配置を提案します。
+            </p>
+            <ul class="feature-list">
+              <li>設備負荷・必要人員の自動計算</li>
+              <li>AI日程計画（スケジューリング）</li>
+              <li>生産管理板（日報）</li>
+              <li>品質管理（不良・パレート図）</li>
+              <li>月次PDFレポート・CSV／JSON入出力</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
+              <a class="btn btn-sm btn-line" href="https://sumakouba-production-load-calc.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features / Why ===== -->
+    <section class="section section-soft" id="features">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">WHY スマコウバ</p>
+          <h2>「現場で続けられる」にこだわりました</h2>
+          <p class="section-sub">高機能なソフトより、毎日かんたんに使えること。中小製造業の現場目線で設計しています。</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="why-icon" aria-hidden="true">📱</div>
+            <h3>今日からすぐ使える</h3>
+            <p>スマホ・タブレットに最適化。むずかしい初期設定なしで、現場の担当者がそのまま使えます。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon" aria-hidden="true">🎁</div>
+            <h3>まずは無料で</h3>
+            <p>登録のみ・クレジットカード不要で全機能をお試し。導入前にしっかり評価いただけます。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon" aria-hidden="true">📶</div>
+            <h3>オフライン対応</h3>
+            <p>電波の弱い倉庫・車内・工場でも、表示・入力・再計算が可能。現場を止めません。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon" aria-hidden="true">🖨️</div>
+            <h3>紙の運用に乗せやすい</h3>
+            <p>計画・指示書・日報をPDF／印刷、データはCSVで入出力。既存のやり方を活かせます。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon" aria-hidden="true">💴</div>
+            <h3>IT導入補助金の相談可</h3>
+            <p>導入費（オンボーディング）の補助についてもご相談いただけます。お気軽にどうぞ。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon" aria-hidden="true">🔗</div>
+            <h3>シリーズで連携</h3>
+            <p>積載・計画・負荷を組み合わせれば、計画から現場・出荷まで一気通貫で見える化できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">PRICING</p>
+          <h2>料金プラン</h2>
+          <p class="section-sub">法人向けの月額・年額プラン。まずは無料でお試しいただけます。</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-card highlight">
+            <span class="price-badge">おすすめ</span>
+            <h3>スタンダード</h3>
+            <p class="price-target">単一工場・現場の業務をしっかり見える化</p>
+            <div class="price">
+              <span class="price-amount">¥19,800</span>
+              <span class="price-unit">／月（税別）</span>
+            </div>
+            <p class="price-year">年額 ¥198,000（約2ヶ月分お得）</p>
+            <ul class="feature-list">
+              <li>各アプリ・1拠点／ユーザー数無制限</li>
+              <li>対象アプリの全機能を利用可</li>
+              <li>PDFレポート・CSV／JSON入出力</li>
+              <li>メールでのサポート</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#contact">お問い合わせ・お申し込み</a>
+          </div>
+
+          <div class="price-card">
+            <h3>マルチ拠点／エンタープライズ</h3>
+            <p class="price-target">複数工場・全社展開・3アプリ一括導入・導入伴走</p>
+            <div class="price">
+              <span class="price-amount price-quote">個別見積</span>
+            </div>
+            <p class="price-year">要件に合わせてお見積りします</p>
+            <ul class="feature-list">
+              <li>拠点数無制限</li>
+              <li>スタンダードの全機能</li>
+              <li>導入・運用のサポート（伴走）</li>
+              <li>個別要件のご相談</li>
+            </ul>
+            <a class="btn btn-line btn-block" href="#contact">お問い合わせ</a>
+          </div>
+        </div>
+
+        <div class="pricing-note">
+          <p>・お支払いは<strong>請求書／口座振替</strong>など（法人向け）。適格請求書（インボイス）に対応予定です。</p>
+          <p>・3アプリまとめての導入・マルチ拠点は個別にお見積りします。</p>
+          <p>・<strong>IT導入補助金</strong>の活用もご相談いただけます。導入費（オンボーディング）はプランに応じて別途。</p>
+          <p class="pricing-note-fine">※ 価格はすべて税別。各アプリの最新の料金は、各アプリ内の料金ページをご確認ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact CTA ===== -->
+    <section class="section section-cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2>導入のご相談・お見積りはお気軽に</h2>
+          <p>気になるアプリのお問い合わせフォームから、ご連絡ください。デモや無料トライアルのご案内もできます。</p>
+          <div class="cta-grid">
+            <a class="cta-link accent-blue" href="https://smakouba-truck-loader.vercel.app/support" target="_blank" rel="noopener">
+              <span class="cta-link-name">スマコウバ積載</span>
+              <span class="cta-link-sub">トラック積載 → お問い合わせ</span>
+            </a>
+            <a class="cta-link accent-indigo" href="https://sumakouba-production-plan.vercel.app/contact" target="_blank" rel="noopener">
+              <span class="cta-link-name">スマコウバ計画</span>
+              <span class="cta-link-sub">生産計画 → お問い合わせ</span>
+            </a>
+            <a class="cta-link accent-cyan" href="https://sumakouba-production-load-calc.vercel.app/contact" target="_blank" rel="noopener">
+              <span class="cta-link-name">スマコウバ負荷</span>
+              <span class="cta-link-sub">設備負荷 → お問い合わせ</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Company ===== -->
+    <section class="section section-soft" id="company">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">COMPANY</p>
+          <h2>会社情報</h2>
+        </div>
+        <dl class="company-table">
+          <div><dt>運営</dt><dd>スマコウバ運営事務局</dd></div>
+          <div><dt>事業内容</dt><dd>中小製造業向け業務アプリ「スマコウバ」シリーズ（積載・計画・負荷）の開発・運営</dd></div>
+          <div><dt>提供サービス</dt><dd>スマコウバ積載 ／ スマコウバ計画 ／ スマコウバ負荷</dd></div>
+          <div><dt>お問い合わせ</dt><dd>各アプリの<a href="#contact">お問い合わせフォーム</a>よりご連絡ください</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">スマコウバ</span>
+        <p>中小製造業の現場を、データで支える。</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>製品</h4>
+          <a href="https://smakouba-truck-loader.vercel.app" target="_blank" rel="noopener">スマコウバ積載</a>
+          <a href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">スマコウバ計画</a>
+          <a href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">スマコウバ負荷</a>
+        </div>
+        <div class="footer-col">
+          <h4>サイト内</h4>
+          <a href="#products">製品</a>
+          <a href="#pricing">料金</a>
+          <a href="#company">会社情報</a>
+          <a href="#contact">お問い合わせ</a>
+        </div>
+        <div class="footer-col">
+          <h4>プライバシー</h4>
+          <a href="https://smakouba-truck-loader.vercel.app/privacy" target="_blank" rel="noopener">積載のポリシー</a>
+          <a href="https://sumakouba-production-plan.vercel.app/privacy" target="_blank" rel="noopener">計画のポリシー</a>
+          <a href="https://sumakouba-production-load-calc.vercel.app/privacy" target="_blank" rel="noopener">負荷のポリシー</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© <span id="year">2026</span> スマコウバ運営事務局</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
