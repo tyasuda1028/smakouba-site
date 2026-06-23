@@ -9,15 +9,11 @@
   <rect width="100" height="100" rx="24" fill="url(#g)"/>
   <text x="47" y="72" text-anchor="middle" fill="#ffffff" font-size="68" font-weight="900"
         font-family="'Hiragino Sans','Noto Sans JP',sans-serif">ス</text>
-  <g transform="translate(78 79)" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round">
-    <line x1="0" y1="-15" x2="0" y2="-11"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(45)"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(90)"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(135)"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(180)"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(225)"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(270)"/>
-    <line x1="0" y1="-15" x2="0" y2="-11" transform="rotate(315)"/>
-    <circle cx="0" cy="0" r="5" fill="#3b82f6" stroke="#ffffff" stroke-width="3"/>
+  <!-- 工場アイコン（右下） -->
+  <g transform="translate(58 59) scale(1.15)" fill="#ffffff">
+    <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+    <rect x="6.4" y="16.5" width="2.6" height="3.4" rx="0.5" fill="#3b82f6"/>
+    <rect x="11" y="16.5" width="2.6" height="3.4" rx="0.5" fill="#3b82f6"/>
+    <rect x="15.6" y="16.5" width="2.6" height="3.4" rx="0.5" fill="#3b82f6"/>
   </g>
 </svg>
