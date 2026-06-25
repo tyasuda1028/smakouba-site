@@ -228,8 +228,10 @@ img { max-width: 100%; display: block; }
 /* ===== Products ===== */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 26px;
+  max-width: 820px;
+  margin: 0 auto;
 }
 .product-card {
   position: relative;
@@ -254,6 +256,7 @@ img { max-width: 100%; display: block; }
 .accent-blue { --accent: linear-gradient(90deg, #3b82f6, #60a5fa); --accent-solid: #3b82f6; }
 .accent-indigo { --accent: linear-gradient(90deg, #6366f1, #818cf8); --accent-solid: #6366f1; }
 .accent-cyan { --accent: linear-gradient(90deg, #06b6d4, #22d3ee); --accent-solid: #06b6d4; }
+.accent-teal { --accent: linear-gradient(90deg, #0d9488, #2dd4bf); --accent-solid: #0f766e; }
 
 .product-icon {
   width: 52px; height: 52px;
@@ -418,9 +421,11 @@ img { max-width: 100%; display: block; }
 /* ===== Pricing (per app) ===== */
 .pricing-apps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   align-items: start;
+  max-width: 820px;
+  margin: 0 auto;
 }
 .price-app {
   position: relative;
@@ -501,7 +506,7 @@ img { max-width: 100%; display: block; }
 .cta-box > p { font-size: 16px; opacity: .95; margin: 0 auto 32px; max-width: 560px; }
 .cta-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   max-width: 760px;
   margin: 0 auto;
