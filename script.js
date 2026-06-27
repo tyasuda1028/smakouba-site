@@ -30,3 +30,30 @@
   var el = document.getElementById('year');
   if (el) el.textContent = new Date().getFullYear();
 })();
+
+// スクロールで控えめにフェードアップ表示（JS有効時のみ・reduced-motion配慮）
+(function () {
+  document.documentElement.classList.add('js');
+  var targets = document.querySelectorAll(
+    '.section-head, .product-card, .why-item, .pain-card, .price-app, .founder-box, .cta-box'
+  );
+  if (!targets.length) return;
+  targets.forEach(function (el) { el.classList.add('reveal'); });
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+  targets.forEach(function (el) { io.observe(el); });
+})();
