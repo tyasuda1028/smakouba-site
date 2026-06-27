@@ -316,6 +316,7 @@ img { max-width: 100%; display: block; }
 .accent-indigo { --accent: linear-gradient(90deg, #6366f1, #818cf8); --accent-solid: #6366f1; }
 .accent-cyan { --accent: linear-gradient(90deg, #06b6d4, #22d3ee); --accent-solid: #06b6d4; }
 .accent-teal { --accent: linear-gradient(90deg, #0d9488, #2dd4bf); --accent-solid: #0f766e; }
+.accent-amber { --accent: linear-gradient(90deg, #d97706, #f59e0b); --accent-solid: #b45309; }
 
 .product-icon {
   width: 52px; height: 52px;
