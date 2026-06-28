@@ -795,3 +795,9 @@ img { max-width: 100%; display: block; }
 .product-guide-link { margin: -4px 0 14px; font-size: 13px; }
 .product-guide-link a { color: var(--blue); text-decoration: none; }
 .product-guide-link a:hover { text-decoration: underline; }
+
+/* フッター下部のリンク（特商法など） */
+.footer-bottom small a { color: #94a3b8; text-decoration: underline; text-underline-offset: 2px; }
+.footer-bottom small a:hover { color: #fff; }
+/* 特商法など法務ページのテーブル微調整 */
+.legal-table { margin-top: 8px; }
