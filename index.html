@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="vvGW9G_-wKw_jdDhNEtlIvW-nthP4IE423jUAPEOIqc" />
   <title>スマコウバ｜中小製造業のための現場アプリ（計画・負荷・積載・図面・計測）</title>
-  <meta name="description" content="高額な生産管理システムは、うちには大きすぎた——そんな中小製造業のための現場アプリ。生産計画・設備負荷・トラック積載・図面管理・計測機器管理を、気になる1つから。スマホですぐ、今のExcelや紙と併用しながら見える化。製造・調達の現場発。運営：スマコウバ運営事務局。" />
+  <meta name="description" content="高額な生産管理システムは大きすぎた——中小製造業のための現場アプリ。生産計画・設備負荷・トラック積載・図面・計測機器の管理を、気になる1つからスマホで。今のExcelや紙と併用しながら見える化。" />
   <meta name="theme-color" content="#3b82f6" />
   <link rel="canonical" href="https://www.sumakouba.com/" />
 
@@ -16,9 +16,94 @@
   <meta property="og:description" content="高額な生産管理システムは、うちには大きすぎた。生産計画・設備負荷・トラック積載・図面管理・計測機器管理を、気になる1つから。製造・調達の現場発。" />
   <meta property="og:site_name" content="スマコウバ" />
   <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://www.sumakouba.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="スマコウバ｜中小製造業のための現場アプリ" />
+  <meta name="twitter:description" content="気になる1つから小さく始める、製造現場のためのアプリ。計画・負荷・積載・図面・計測。" />
+  <meta name="twitter:image" content="https://www.sumakouba.com/og-image.png" />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- ===== 構造化データ (JSON-LD) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.sumakouba.com/#org",
+        "name": "スマコウバ",
+        "alternateName": "スマコウバ運営事務局",
+        "url": "https://www.sumakouba.com/",
+        "logo": "https://www.sumakouba.com/og-image.png",
+        "description": "中小製造業向けの現場アプリ「スマコウバ」シリーズ（計画・負荷・積載・図面・計測）の開発・運営。"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.sumakouba.com/#website",
+        "url": "https://www.sumakouba.com/",
+        "name": "スマコウバ",
+        "publisher": { "@id": "https://www.sumakouba.com/#org" },
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "スマコウバ計画",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS",
+        "url": "https://sumakouba-production-plan.vercel.app",
+        "description": "生産計画・所要量・在庫を見える化。エクセルの生産計画から脱却する中小製造業向けアプリ。",
+        "publisher": { "@id": "https://www.sumakouba.com/#org" },
+        "offers": { "@type": "Offer", "price": "29800", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "スマコウバ負荷",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS",
+        "url": "https://sumakouba-production-load-calc.vercel.app",
+        "description": "設備と人の工数（設備負荷・山積み）を見える化する中小製造業向けアプリ。",
+        "publisher": { "@id": "https://www.sumakouba.com/#org" },
+        "offers": { "@type": "Offer", "price": "19800", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "スマコウバ積載",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS",
+        "url": "https://sumakouba-truck-loader.vercel.app",
+        "description": "トラック積載の計画・可視化・積み込み順の指示出しができる中小製造業向けアプリ。",
+        "publisher": { "@id": "https://www.sumakouba.com/#org" },
+        "offers": { "@type": "Offer", "price": "19800", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "スマコウバ図面",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS",
+        "url": "https://sumakouba-zumen.vercel.app",
+        "description": "図面・図番を端末内だけで管理。完全オフライン・クラウド送信なし・端末内OCR取込。",
+        "publisher": { "@id": "https://www.sumakouba.com/#org" },
+        "offers": { "@type": "Offer", "price": "19800", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "スマコウバ計測",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS",
+        "url": "https://sumakouba-keisoku.vercel.app",
+        "description": "計測機器の台帳・校正期限の自動計算とアラート・貸出QRを一元管理する中小製造業向けアプリ。",
+        "publisher": { "@id": "https://www.sumakouba.com/#org" },
+        "offers": { "@type": "Offer", "price": "19800", "priceCurrency": "JPY" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- ===== Header ===== -->
