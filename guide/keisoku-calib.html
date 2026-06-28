@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>計測機器の校正期限管理アプリ｜台帳とアラートで忘れない｜スマコウバ</title>
+  <meta name="description" content="計測機器の校正期限が管理しきれない——Excel台帳の期限切れ見落としを、台帳＋期限自動計算＋メールアラートで防ぐ方法を、中小製造業の現場目線で具体的に解説します。" />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="canonical" href="https://www.sumakouba.com/guide/keisoku-calib.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.sumakouba.com/guide/keisoku-calib.html" />
+  <meta property="og:title" content="計測機器の校正期限管理アプリ｜台帳とアラートで忘れない｜スマコウバ" />
+  <meta property="og:description" content="計測機器の校正期限が管理しきれない——Excel台帳の期限切れ見落としを、台帳＋期限自動計算＋メールアラートで防ぐ方法を、中小製造業の現場目線で具体的に解説します。" />
+  <meta property="og:site_name" content="スマコウバ" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://www.sumakouba.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.sumakouba.com/og-image.png" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "計測機器の校正期限、もう忘れない。台帳とアラートをスマホで一元管理する",
+      "description": "計測機器の校正期限が管理しきれない——Excel台帳の期限切れ見落としを、台帳＋期限自動計算＋メールアラートで防ぐ方法を、中小製造業の現場目線で具体的に解説します。",
+      "inLanguage": "ja",
+      "datePublished": "2026-06-28",
+      "dateModified": "2026-06-28",
+      "mainEntityOfPage": "https://www.sumakouba.com/guide/keisoku-calib.html",
+      "image": "https://www.sumakouba.com/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "スマコウバ運営事務局"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "スマコウバ",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.sumakouba.com/og-image.png"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://www.sumakouba.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "計測機器の校正期限、もう忘れない。台帳とアラートをスマホで一元管理する",
+          "item": "https://www.sumakouba.com/guide/keisoku-calib.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="スマコウバ ホーム"><span class="brand-logo" aria-hidden="true"><svg viewBox="0 0 100 100" width="36" height="36" role="img"><defs><linearGradient id="hdr-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="0.5" stop-color="#3b82f6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#hdr-grad)"/><text x="47" y="72" text-anchor="middle" fill="#fff" font-size="68" font-weight="900" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">ス</text></svg></span><span class="brand-name">スマコウバ</span></a>
+      <nav class="nav" id="nav">
+        <a href="/#products">製品</a><a href="/#features">特長</a><a href="/#pricing">料金</a><a href="/#faq">FAQ</a><a href="/#company">会社情報</a>
+        <a href="/#contact" class="nav-cta">お問い合わせ</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article container">
+      <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a> <span aria-hidden="true">›</span> <span>お役立ち情報</span></nav>
+      <header class="article-head">
+        <p class="eyebrow">スマコウバ計測</p>
+        <h1>計測機器の校正期限、もう忘れない。台帳とアラートをスマホで一元管理する</h1>
+      </header>
+      <div class="article-body">
+<p>ノギス、マイクロメータ、ダイヤルゲージ、トルクレンチ、はかり——。気づけば工場のあちこちに計測機器が散らばっていて、「これ、次の校正いつだっけ？」と毎回エクセルを開いて確認している。そんな現場は少なくありません。校正そのものは外部に出せばいいのですが、本当に困るのは<strong>「期限が切れていたことに、誰も気づかなかった」</strong>という瞬間です。出荷前の検査で使った機器が実は校正切れだった、と後から判明すると、対応の手間も信用への影響も小さくありません。</p>
+
+<p>この記事では、計測機器の校正期限をなぜ忘れてしまうのか、その根っこの理由を整理したうえで、台帳と期限の自動計算、そしてアラート通知で「忘れない仕組み」をつくる考え方を、中小製造業の現場目線でまとめます。後半では、その仕組みをそのまま形にした「スマコウバ計測」というアプリも紹介します。</p>
+
+<h2>なぜ計測機器の校正期限は、忘れてしまうのか</h2>
+
+<p>多くの工場では、計測器の台帳をエクセルで管理しています。機器名、管理番号、メーカー、最終校正日、次回校正日——。項目としては十分に見えます。それでも校正忘れが起きるのは、エクセル台帳に<strong>「期限が近づいても、向こうから知らせてくれない」</strong>という決定的な弱点があるからです。</p>
+
+<p>エクセルは、人が開いて、人が見て、人が気づくことで初めて機能します。つまり、毎月誰かが台帳を開いて全機器の次回校正日を目視でチェックし続けない限り、期限切れは静かに発生します。担当者が忙しい月、休んだ週、引き継ぎが曖昧だった時期——そこに穴があきます。</p>
+
+<ul>
+<li>次回校正日の計算が手作業で、入力ミスや更新漏れが起きる</li>
+<li>ファイルが複数の場所にコピーされ、どれが最新か分からなくなる</li>
+<li>担当者一人の頭の中だけに「そろそろあの機器」という記憶が残り、属人化する</li>
+<li>期限が近づいても通知がないため、気づくのはたいてい使う直前か、使った後</li>
+</ul>
+
+<p>「計測機器 校正 期限 管理 アプリ」を探し始める方の多くは、この「気づけなさ」に限界を感じています。台帳そのものが悪いのではなく、台帳に<strong>「自動で計算する」「向こうから知らせる」</strong>機能が足りないのです。</p>
+
+<h2>答えは「台帳＋期限の自動計算＋アラート」の三点セット</h2>
+
+<p>校正忘れをなくす仕組みは、突き詰めるとシンプルです。次の三つがそろっていれば、人の記憶に頼らなくても期限切れは防げます。</p>
+
+<h3>1. 一元化された台帳</h3>
+<p>機器の情報が一か所に集まっていること。型番・メーカー・管理番号・保管場所・校正周期が機器ごとに整理され、誰が見ても同じ最新情報にたどり着ける状態です。</p>
+
+<h3>2. 校正期限の自動計算</h3>
+<p>最終校正日に校正周期を足せば、次回校正日は機械的に決まります。これを手計算ではなく自動で出すこと。校正が終わって最終校正日を更新したら、次回校正日も自動で書き換わる——この一手間がなくなるだけで、更新漏れはぐっと減ります。</p>
+
+<h3>3. 期限前のアラート通知</h3>
+<p>そして核心がこれです。期限が近づいたら、台帳を開かなくても<strong>向こうから知らせてくれる</strong>こと。校正期限のアラート通知があれば、「気づいたときには手遅れ」が「余裕をもって手配できる」に変わります。30日前に知れば外部校正の段取りも組めますし、1日前の念押しがあれば最後の取りこぼしも防げます。</p>
+
+<h2>スマコウバ計測でどう解決するか</h2>
+
+<p>この三点セットを、特別な知識がなくても回せる形にしたのが「スマコウバ計測」です。中小製造業・町工場の現場向けに、計測機器の管理に絞ってつくった小さなアプリです。</p>
+
+<h3>機器台帳と書類を、機器ごとにまとめて持てる</h3>
+<p>型番・メーカー・管理番号・保管場所といった基本情報に加えて、取扱説明書や校正証明書をPDFで機器に添付できます。「あの機器の校正証明書どこだっけ」と紙のファイルを探し回る時間がなくなります。計測器の台帳をエクセルで管理している状態から移すと、書類まで一緒に持ち歩けるのが大きな違いです。</p>
+
+<h3>校正期限を自動計算し、メールでアラート</h3>
+<p>最終校正日と校正周期を入れておけば、次回校正日は自動で計算されます。そして期限が近づくと、<strong>30日前・7日前・1日前</strong>のタイミングでアラートメールが届きます。台帳を開いて目視で確認する習慣がなくても、期限は向こうからやってきます。点検期限の管理も同じ仕組みで扱えます。</p>
+
+<h3>貸出・返却もQRか手入力で記録</h3>
+<p>機器を誰がどこに持ち出しているか分からない、という問題もよくあります。スマコウバ計測では貸出・返却をQRコードで読み取って記録できますし、QRを使わない運用なら手入力でも構いません。「今これは誰が使っている」が台帳の中で見えるようになります。</p>
+
+<h3>測定機器管理台帳としてISO9001の運用にも向く</h3>
+<p>ISO9001の文脈では、計測機器を識別し、校正状態を記録し、期限を管理していることを示せる必要があります。スマコウバ計測の台帳と校正履歴、自動計算された次回校正日は、測定機器管理台帳としてこうした記録の土台に使えます。監査の場面でも、機器ごとに状態と証明書をたどれるのは説明しやすいはずです。出力はCSVやPDFで取り出せるので、社内の様式に合わせて印刷したり保管したりもできます。</p>
+
+<h2>今のエクセルや紙と併用しながら、小さく始められる</h2>
+
+<p>いきなり全部を移し替える必要はありません。まずは校正忘れが怖い機器、よく貸し出す機器など、気になる一部だけを登録して、アラートが本当に届くか試してみる——そんな始め方ができます。CSVやPDFで出力できるので、これまでのエクセル台帳や紙の運用と併用しながら、少しずつ移していけます。</p>
+
+<p>スマコウバ計測はWebとiOSの両方で使えて、料金は月額の明朗な定額です。大きな生産管理システムは、こうした一台ずつの校正管理にはかえって大きすぎることがあります。計測機器の管理という一点に絞って、1アプリ単体から小さく始められるのがこのアプリの考え方です。登録するだけで30日間は無料で試せるので、まずは手持ちの機器をいくつか入れて、期限アラートの感触を確かめてみてください。</p>
+
+<h2>まとめ</h2>
+
+<p>計測機器の校正忘れは、担当者の不注意というより、エクセル台帳が「期限を知らせてくれない」ことから起きます。解決の鍵は、台帳・期限の自動計算・期限前のアラート通知という三点をそろえること。スマコウバ計測は、機器台帳と証明書PDF、最終校正日＋周期からの自動計算、30/7/1日前のメールアラート、貸出QRまでをひとつにまとめ、ISO9001の台帳運用にも使える形で提供します。今のやり方を捨てずに、気になる機器から小さく始めてみてください。</p>
+      </div>
+      <aside class="article-cta accent-amber">
+        <h2>計測機器の校正期限を一元管理するなら「スマコウバ計測」</h2>
+        <p>登録するだけで30日間無料でお試しいただけます。今のExcelや紙と併用しながら、気になるところから小さく始められます。</p>
+        <div class="article-cta-actions">
+          <a class="btn btn-primary" href="https://sumakouba-keisoku.vercel.app/login" target="_blank" rel="noopener">スマコウバ計測を見る</a>
+          <a class="btn btn-ghost" href="/#contact">お問い合わせ</a>
+        </div>
+      </aside>
+      <p class="article-back"><a href="/">← スマコウバのトップへ戻る</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="brand-name">スマコウバ</span><p>中小製造業の現場を、データで支える。</p></div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>製品</h4>
+          <a href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">スマコウバ計画</a>
+          <a href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">スマコウバ負荷</a>
+          <a href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">スマコウバ積載</a>
+          <a href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">スマコウバ図面</a>
+          <a href="https://sumakouba-keisoku.vercel.app" target="_blank" rel="noopener">スマコウバ計測</a></div>
+        <div class="footer-col"><h4>サイト内</h4>
+          <a href="/#products">製品</a><a href="/#pricing">料金</a><a href="/#faq">FAQ</a><a href="/#company">会社情報</a><a href="/#contact">お問い合わせ</a></div>
+        <div class="footer-col"><h4>お役立ち情報</h4>
+          <a href="/guide/keisoku-calib.html">計測機器の校正期限管理</a>
+          <a href="/guide/zumen-offline.html">図面をクラウドに上げず管理</a>
+          <a href="/guide/sekisai-shiji.html">トラック積み込み順の指示</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom"><small>© <span id="year">2026</span> スマコウバ運営事務局</small></div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

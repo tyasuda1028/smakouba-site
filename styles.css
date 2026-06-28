@@ -656,7 +656,7 @@ img { max-width: 100%; display: block; }
 }
 .footer-brand .brand-name { color: #fff; font-size: 22px; }
 .footer-brand p { font-size: 13.5px; color: #94a3b8; margin: 8px 0 0; }
-.footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; }
 .footer-col h4 { font-size: 13px; color: #fff; margin: 0 0 14px; letter-spacing: .04em; }
 .footer-col a {
   display: block;
@@ -758,3 +758,40 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ===== FAQ ===== */
+.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); overflow: hidden; }
+.faq-item summary { cursor: pointer; list-style: none; padding: 18px 22px; font-weight: 700; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-size: 22px; color: var(--blue); font-weight: 400; line-height: 1; transition: transform .2s ease; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-body { padding: 0 22px 20px; }
+.faq-body p { margin: 0; color: var(--ink-soft); line-height: 1.9; }
+
+/* ===== Article (guide pages) ===== */
+.article { max-width: 760px; padding-top: 112px; padding-bottom: 84px; }
+.breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.article-head { margin-bottom: 30px; }
+.article-head h1 { font-size: clamp(26px, 4.4vw, 38px); line-height: 1.42; letter-spacing: .01em; color: var(--ink); margin: 0; }
+.article-body { color: var(--ink-soft); }
+.article-body h2 { font-size: clamp(20px, 3vw, 25px); color: var(--ink); margin: 46px 0 16px; padding-left: 14px; border-left: 4px solid var(--blue); line-height: 1.5; }
+.article-body h3 { font-size: 18px; color: var(--ink); margin: 30px 0 12px; }
+.article-body p { line-height: 1.95; margin: 0 0 18px; }
+.article-body ul { margin: 0 0 20px; padding-left: 1.3em; }
+.article-body li { line-height: 1.9; margin-bottom: 8px; }
+.article-body strong { color: var(--ink); font-weight: 700; }
+.article-cta { margin: 50px 0 24px; padding: 30px; border-radius: var(--radius); background: var(--bg-tint); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.article-cta h2 { font-size: 20px; color: var(--ink); margin: 0 0 10px; }
+.article-cta p { color: var(--ink-soft); line-height: 1.85; margin: 0 0 18px; }
+.article-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.article-back { margin-top: 28px; }
+.article-back a { color: var(--blue); text-decoration: none; font-size: 14px; }
+.article-back a:hover { text-decoration: underline; }
+
+/* 製品カードの関連記事リンク */
+.product-guide-link { margin: -4px 0 14px; font-size: 13px; }
+.product-guide-link a { color: var(--blue); text-decoration: none; }
+.product-guide-link a:hover { text-decoration: underline; }
