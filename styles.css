@@ -1,9 +1,9 @@
 /* ===== Design tokens ===== */
 :root {
-  --indigo: #6366f1;
-  --blue: #3b82f6;
-  --cyan: #06b6d4;
-  --grad: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%);
+  --indigo: #4f46e5;
+  --blue: #2563eb;
+  --cyan: #0891b2;
+  --grad: linear-gradient(135deg, #4f46e5 0%, #2563eb 50%, #0891b2 100%);
 
   --ink: #0f172a;
   --ink-soft: #334155;
@@ -72,9 +72,9 @@ img { max-width: 100%; display: block; }
 .btn-primary {
   background: var(--grad);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(59, 130, 246, .35);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, .35);
 }
-.btn-primary:hover { box-shadow: 0 10px 26px rgba(59, 130, 246, .45); transform: translateY(-1px); }
+.btn-primary:hover { box-shadow: 0 10px 26px rgba(37, 99, 235, .45); transform: translateY(-1px); }
 .btn-ghost {
   background: rgba(255, 255, 255, .8);
   color: var(--ink);
@@ -153,8 +153,8 @@ img { max-width: 100%; display: block; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(1100px 480px at 78% -8%, rgba(6, 182, 212, .14), transparent 60%),
-    radial-gradient(900px 460px at 8% 4%, rgba(99, 102, 241, .14), transparent 60%),
+    radial-gradient(1100px 480px at 78% -8%, rgba(8, 145, 178, .14), transparent 60%),
+    radial-gradient(900px 460px at 8% 4%, rgba(79, 70, 229, .14), transparent 60%),
     var(--bg-soft);
 }
 /* 極薄の製図方眼（中央フェードで可読性確保） */
@@ -164,8 +164,8 @@ img { max-width: 100%; display: block; }
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(99, 102, 241, .045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, .045) 1px, transparent 1px);
+    linear-gradient(rgba(37, 99, 235, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, .045) 1px, transparent 1px);
   background-size: 48px 48px;
   -webkit-mask: radial-gradient(620px 420px at 50% 30%, #000, transparent 75%);
   mask: radial-gradient(620px 420px at 50% 30%, #000, transparent 75%);
@@ -312,11 +312,11 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow-lg), 0 0 0 1px color-mix(in srgb, var(--accent-solid, var(--blue)) 24%, transparent);
   border-color: transparent;
 }
-.accent-blue { --accent: linear-gradient(90deg, #3b82f6, #60a5fa); --accent-solid: #3b82f6; }
-.accent-indigo { --accent: linear-gradient(90deg, #6366f1, #818cf8); --accent-solid: #6366f1; }
-.accent-cyan { --accent: linear-gradient(90deg, #06b6d4, #22d3ee); --accent-solid: #06b6d4; }
-.accent-teal { --accent: linear-gradient(90deg, #0d9488, #2dd4bf); --accent-solid: #0f766e; }
-.accent-amber { --accent: linear-gradient(90deg, #d97706, #f59e0b); --accent-solid: #b45309; }
+.accent-blue { --accent: linear-gradient(90deg, #6e72f2, #4f46e5); --accent-solid: #4f46e5; } /* 積載 indigo */
+.accent-indigo { --accent: linear-gradient(90deg, #4b8df8, #2563eb); --accent-solid: #2563eb; } /* 計画 blue */
+.accent-cyan { --accent: linear-gradient(90deg, #1fc8e3, #0891b2); --accent-solid: #0e7490; } /* 負荷 teal (text=濃いめでAA確保) */
+.accent-teal { --accent: linear-gradient(90deg, #46638f, #3e5c8a); --accent-solid: #3e5c8a; } /* 図面 navy */
+.accent-amber { --accent: linear-gradient(90deg, #9b6cf8, #7c3aed); --accent-solid: #7c3aed; } /* 計測 violet */
 
 .product-icon {
   width: 52px; height: 52px;
@@ -517,7 +517,7 @@ img { max-width: 100%; display: block; }
 .tier.is-rec {
   border-color: var(--accent-solid, var(--blue));
   background: #fff;
-  box-shadow: 0 0 0 1px var(--accent-solid, var(--blue)), 0 8px 20px color-mix(in srgb, var(--accent-solid, #3b82f6) 16%, transparent);
+  box-shadow: 0 0 0 1px var(--accent-solid, var(--blue)), 0 8px 20px color-mix(in srgb, var(--accent-solid, #2563eb) 16%, transparent);
 }
 .tier-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 .tier-name { font-size: 13.5px; font-weight: 800; color: var(--ink); display: inline-flex; align-items: center; gap: 7px; flex-wrap: wrap; }
