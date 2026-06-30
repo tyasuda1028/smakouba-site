@@ -99,7 +99,21 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
 .nav-links a:hover{color:var(--brand)}
 .nav .btn{padding:.55em 1.1em;font-size:.9rem}
 .nav-cta{margin-left:4px}
-@media(max-width:860px){.nav-links{display:none}}
+.nav-toggle{display:none;flex-direction:column;gap:4px;width:42px;height:42px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center;margin-left:8px;flex:none}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:.2s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:860px){
+  .nav-links{position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:#fff;
+    border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);padding:6px 0;margin-left:0;
+    transform:translateY(-140%);transition:transform .25s ease;display:flex;z-index:40}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:13px 22px;font-size:1rem;border-bottom:1px solid var(--bg-tint)}
+  .nav-toggle{display:flex}
+  .nav-cta{display:none}
+}
 
 /* ============================ hero ============================ */
 .hero{background:
@@ -242,7 +256,21 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
 .msg-card p:last-of-type{margin-bottom:0}
 .sign{margin-top:26px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:12px}
 
-/* ============================ pricing note ============================ */
+/* ============================ pricing ============================ */
+.pricing-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px}
+@media(max-width:920px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pricing-grid{grid-template-columns:1fr;max-width:340px;margin-inline:auto}}
+.price-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c,var(--brand));
+  border-radius:var(--radius);padding:24px 18px;text-align:center;display:flex;flex-direction:column;transition:.2s}
+.price-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.price-card .pc-name{font-weight:800;color:var(--ink);font-size:1.04rem;margin-bottom:14px}
+.price-card .pc-month{font-size:1.55rem;font-weight:800;color:var(--ink);line-height:1.1}
+.price-card .pc-month small{font-size:.72rem;color:var(--muted);font-weight:600}
+.price-card .pc-year{font-size:.82rem;color:var(--c,var(--brand));font-weight:700;margin-top:7px}
+.price-card .pc-btn{margin-top:auto;padding-top:0}
+.price-card .pc-btn a{display:block;margin-top:16px;background:var(--c,var(--brand));color:#fff;border-radius:999px;
+  padding:.62em 1em;font-weight:700;font-size:.9rem;transition:.18s}
+.price-card .pc-btn a:hover{filter:brightness(1.08)}
 .note{margin-top:30px;display:grid;gap:8px;font-size:.92rem;color:var(--body);
   background:var(--bg-tint);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px}
 .note b{color:var(--ink)}
@@ -404,7 +432,7 @@ footer a:hover{color:#fff}
 <header>
   <div class="wrap nav">
     <a class="brand-lk" href="#top"><span class="mark">ス</span>スマコウバ</a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navMenu">
       <a href="#products">製品</a>
       <a href="#why">特長</a>
       <a href="#pricing">料金</a>
@@ -413,6 +441,7 @@ footer a:hover{color:#fff}
     </nav>
     <a class="btn btn-ghost nav-cta" href="#products">製品を見る</a>
     <a class="btn btn-primary" href="#contact">相談する</a>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -543,7 +572,6 @@ footer a:hover{color:#fff}
           <a class="plink" href="https://www.sumakouba.com/guide/plan-excel.html">関連記事：エクセルの生産計画の属人化から抜け出す →</a>
         </div>
         <div class="side">
-          <div class="price">¥29,800<small>／月（税別）</small><span class="yr">年額 ¥298,000（2ヶ月分お得）</span></div>
           <a class="open" href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
           <a class="plink" href="https://sumakouba-production-plan.vercel.app/contact">お問い合わせ</a>
         </div>
@@ -566,7 +594,6 @@ footer a:hover{color:#fff}
           <a class="plink" href="https://www.sumakouba.com/guide/load-yamazumi.html">関連記事：設備と人の負荷を山積み表で見える化する →</a>
         </div>
         <div class="side">
-          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
           <a class="open" href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
           <a class="plink" href="https://sumakouba-production-load-calc.vercel.app/contact">お問い合わせ</a>
         </div>
@@ -590,7 +617,6 @@ footer a:hover{color:#fff}
           <a class="plink" href="https://www.sumakouba.com/guide/sekisai-shiji.html">関連記事：トラックの積み込み順を指示書で可視化する →</a>
         </div>
         <div class="side">
-          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
           <a class="open" href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
           <a class="plink" href="https://sumakouba-truck-loader.vercel.app/contact">お問い合わせ</a>
         </div>
@@ -613,7 +639,6 @@ footer a:hover{color:#fff}
           <a class="plink" href="https://www.sumakouba.com/guide/zumen-offline.html">関連記事：図面をクラウドに上げず、端末内だけで管理する →</a>
         </div>
         <div class="side">
-          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
           <a class="open" href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
           <a class="plink" href="https://sumakouba-zumen.vercel.app/contact.html">お問い合わせ</a>
         </div>
@@ -636,7 +661,6 @@ footer a:hover{color:#fff}
           <a class="plink" href="https://www.sumakouba.com/guide/keisoku-calib.html">関連記事：計測機器の校正期限を忘れない一元管理術 →</a>
         </div>
         <div class="side">
-          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
           <a class="open" href="https://sumakouba-keisoku.vercel.app/login" target="_blank" rel="noopener">アプリを見る →</a>
           <a class="plink" href="https://sumakouba-keisoku.vercel.app/contact">お問い合わせ</a>
         </div>
@@ -682,11 +706,20 @@ footer a:hover{color:#fff}
     <p class="lead">アプリごとに、月額／年額のシンプルな1プラン。必要なアプリだけ、単体でご契約いただけます。</p>
   </div>
   <div class="wrap">
+    <div class="pricing-grid">
+      <div class="price-card theme-keikaku reveal"><div class="pc-name">スマコウバ計画</div><div class="pc-month">¥29,800<small>／月（税別）</small></div><div class="pc-year">年額 ¥298,000（2ヶ月分お得）</div><div class="pc-btn"><a href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">アプリを見る</a></div></div>
+      <div class="price-card theme-fuka reveal"><div class="pc-name">スマコウバ負荷</div><div class="pc-month">¥19,800<small>／月（税別）</small></div><div class="pc-year">年額 ¥198,000（2ヶ月分お得）</div><div class="pc-btn"><a href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">アプリを見る</a></div></div>
+      <div class="price-card theme-sekisai reveal"><div class="pc-name">スマコウバ積載</div><div class="pc-month">¥19,800<small>／月（税別）</small></div><div class="pc-year">年額 ¥198,000（2ヶ月分お得）</div><div class="pc-btn"><a href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">アプリを見る</a></div></div>
+      <div class="price-card theme-zumen reveal"><div class="pc-name">スマコウバ図面</div><div class="pc-month">¥19,800<small>／月（税別）</small></div><div class="pc-year">年額 ¥198,000（2ヶ月分お得）</div><div class="pc-btn"><a href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">アプリを見る</a></div></div>
+      <div class="price-card theme-keisoku reveal"><div class="pc-name">スマコウバ計測</div><div class="pc-month">¥19,800<small>／月（税別）</small></div><div class="pc-year">年額 ¥198,000（2ヶ月分お得）</div><div class="pc-btn"><a href="https://sumakouba-keisoku.vercel.app/login" target="_blank" rel="noopener">アプリを見る</a></div></div>
+    </div>
+  </div>
+  <div class="wrap">
     <div class="note reveal">
       <div>・各アプリとも、まずは<b>30日間無料</b>でお試しいただけます（お試しにクレジットカードは不要）。</div>
       <div>・お支払いは<b>クレジットカード決済（Stripe）</b>に対応。長期契約の縛りはなく、いつでも解約できます。</div>
       <div>・サポートは<b>メール</b>で承ります（平日日中の電話・訪問でのご対応はいたしかねます。順次ご返信します）。</div>
-      <div class="small">※ 価格はすべて税別。年額は月額の約10ヶ月分（2ヶ月分お得）。最新の料金・全機能は各アプリの料金ページをご確認ください。料金表は製品セクションの各カードに記載しています。</div>
+      <div class="small">※ 価格はすべて税別。年額は月額の約10ヶ月分（2ヶ月分お得）。最新の料金・全機能は各アプリの料金ページをご確認ください。</div>
     </div>
   </div>
 </section>
@@ -782,6 +815,17 @@ footer a:hover{color:#fff}
     en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
   },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){io.observe(e);});
+})();
+
+/* モバイル：ハンバーガーメニュー */
+(function(){
+  var t=document.getElementById('navToggle'), m=document.getElementById('navMenu');
+  if(!t||!m) return;
+  function set(open){ m.classList.toggle('open',open); t.setAttribute('aria-expanded',open?'true':'false');
+    t.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く'); }
+  t.addEventListener('click',function(){ set(!m.classList.contains('open')); });
+  m.addEventListener('click',function(e){ if(e.target.tagName==='A') set(false); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>860) set(false); });
 })();
 </script>
 </body>
