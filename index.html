@@ -1,35 +1,308 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>スマコウバ｜中小製造業のための現場アプリ（計画・負荷・積載・図面・計測）</title>
+<meta name="description" content="高額な生産管理システムは大きすぎた——中小製造業のための現場アプリ。生産計画・設備負荷・トラック積載・図面・計測機器の管理を、気になる1つからスマホで。今のExcelや紙と併用しながら見える化。" />
+<meta name="theme-color" content="#1d4ed8" />
   <meta name="google-site-verification" content="vvGW9G_-wKw_jdDhNEtlIvW-nthP4IE423jUAPEOIqc" />
-  <title>スマコウバ｜中小製造業のための現場アプリ（計画・負荷・積載・図面・計測）</title>
-  <meta name="description" content="高額な生産管理システムは大きすぎた——中小製造業のための現場アプリ。生産計画・設備負荷・トラック積載・図面・計測機器の管理を、気になる1つからスマホで。今のExcelや紙と併用しながら見える化。" />
-  <meta name="theme-color" content="#3b82f6" />
   <link rel="canonical" href="https://www.sumakouba.com/" />
-
-  <!-- OGP -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sumakouba.com/" />
-  <meta property="og:title" content="スマコウバ｜大きすぎない、中小製造業のための現場アプリ" />
-  <meta property="og:description" content="高額な生産管理システムは、うちには大きすぎた。生産計画・設備負荷・トラック積載・図面管理・計測機器管理を、気になる1つから。製造・調達の現場発。" />
+  <meta property="og:title" content="スマコウバ｜中小製造業のための現場アプリ" />
+  <meta property="og:description" content="高額な生産管理システムは大きすぎた——中小製造業のための現場アプリ。計画・負荷・積載・図面・計測を、気になる1つからスマホで。" />
   <meta property="og:site_name" content="スマコウバ" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:image" content="https://www.sumakouba.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="スマコウバ｜中小製造業のための現場アプリ" />
   <meta name="twitter:description" content="気になる1つから小さく始める、製造現場のためのアプリ。計画・負荷・積載・図面・計測。" />
   <meta name="twitter:image" content="https://www.sumakouba.com/og-image.png" />
+<style>
+/* =====================================================================
+   スマコウバ ブランドカラーシステム / Design Tokens
+   この :root を各アプリにもコピーすれば配色を統一できます
+   ===================================================================== */
+:root{
+  /* --- 製品アクセントカラー（5アプリ共通の正） --- */
+  --keikaku:#2563eb;  --keikaku-tl:#4b8df8; --keikaku-br:#1d4ed8;  /* 計画 ブルー */
+  --fuka:#0891b2;     --fuka-tl:#1fc8e3;    --fuka-br:#0e7490;     /* 負荷 ティール */
+  --sekisai:#4f46e5;  --sekisai-tl:#6e72f2; --sekisai-br:#4338ca;  /* 積載 インディゴ */
+  --zumen:#3e5c8a;    --zumen-tl:#46638f;   --zumen-br:#21314f;    /* 図面 スチールネイビー */
+  --keisoku:#7c3aed;  --keisoku-tl:#9b6cf8; --keisoku-br:#6d28d9;  /* 計測 バイオレット */
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  /* --- ブランド基調 --- */
+  --brand:#2563eb;
+  --ink:#0e1a33;            /* 見出しの濃色 */
+  --body:#3a4661;          /* 本文 */
+  --muted:#6b7790;         /* 補助テキスト */
+  --line:#dce5f2;          /* 罫線・枠 */
+  --bg:#ffffff;
+  --bg-tint:#f4f7fd;       /* 薄いブルー背景 */
+  --bg-tint2:#eef3fc;
+  --deep-tl:#0f2e73;       /* 濃色セクションのグラデ */
+  --deep-br:#2d6bea;
+  --amber:#f59e0b;
 
-  <!-- ===== 構造化データ (JSON-LD) ===== -->
+  --maxw:1160px;
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow:0 18px 50px -22px rgba(15,42,115,.35);
+  --shadow-sm:0 8px 24px -14px rgba(15,42,115,.4);
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,"Noto Sans JP",system-ui,-apple-system,sans-serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Roboto Mono","Noto Sans Mono CJK JP",ui-monospace,monospace;
+}
+
+/* ============================ base ============================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--body);background:var(--bg);line-height:1.85;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"palt" 1}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:22px}
+section{position:relative}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--brand);font-weight:600;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+.eyebrow.on-dark{color:#9cc0ff}
+h2.sec{font-size:clamp(1.55rem,3.1vw,2.35rem);line-height:1.35;color:var(--ink);font-weight:800;
+  letter-spacing:.01em;margin:.55em 0 .5em}
+.lead{color:var(--muted);max-width:60ch;font-size:1.02rem}
+.btn{display:inline-flex;align-items:center;gap:.55em;font-weight:700;font-size:1rem;
+  padding:.85em 1.5em;border-radius:999px;transition:.18s;border:1.5px solid transparent;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--deep-br),var(--keikaku-br));color:#fff;
+  box-shadow:0 12px 30px -12px rgba(37,99,235,.7)}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+.btn-ghost.on-dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.3);color:#fff}
+.btn-ghost.on-dark:hover{background:rgba(255,255,255,.14);border-color:#fff}
+
+/* logo mark */
+.mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(135deg,var(--keikaku-tl),var(--keikaku-br));color:#fff;
+  font-weight:900;font-size:20px;box-shadow:0 4px 12px -4px rgba(37,99,235,.6)}
+.mark.lg{width:54px;height:54px;border-radius:14px;font-size:31px}
+
+/* ============================ header ============================ */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:18px;height:66px}
+.brand-lk{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--ink);font-size:1.18rem;letter-spacing:.02em}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font-size:.93rem;color:var(--body);font-weight:600;transition:.15s}
+.nav-links a:hover{color:var(--brand)}
+.nav .btn{padding:.55em 1.1em;font-size:.9rem}
+.nav-cta{margin-left:4px}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ============================ hero ============================ */
+.hero{background:
+  radial-gradient(900px 480px at 78% -8%,rgba(124,58,237,.30),transparent 60%),
+  radial-gradient(820px 520px at 6% 110%,rgba(8,145,178,.28),transparent 60%),
+  linear-gradient(135deg,var(--deep-tl),var(--keikaku-br) 58%,#2f6ae6);
+  color:#fff;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:46px 46px;mask:linear-gradient(180deg,#000,transparent 88%)}
+.hero .wrap{position:relative;padding-top:84px;padding-bottom:90px}
+.corner{position:absolute;width:34px;height:34px;border:2px solid rgba(255,255,255,.4);pointer-events:none}
+.corner.tl{top:26px;left:18px;border-right:0;border-bottom:0}
+.corner.tr{top:26px;right:18px;border-left:0;border-bottom:0}
+.hero h1{font-size:clamp(2.15rem,5.6vw,4rem);line-height:1.22;font-weight:900;letter-spacing:.01em;
+  margin:.5em 0 .55em;text-wrap:balance}
+.hero h1 .am{color:#ffd479}
+.hero p.sub{max-width:54ch;color:#dbe7ff;font-size:1.06rem;margin-bottom:1.9em}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:2.4em}
+.trust{display:flex;gap:10px 22px;flex-wrap:wrap;font-size:.86rem;color:#cfe0ff}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust .dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
+/* hero product strip */
+.hstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:46px}
+.hstrip a{display:flex;flex-direction:column;align-items:center;gap:9px;padding:16px 8px;border-radius:14px;
+  background:rgba(8,18,46,.34);border:1px solid rgba(255,255,255,.16);transition:.18s}
+.hstrip a:hover{transform:translateY(-3px);background:rgba(8,18,46,.5);border-color:rgba(255,255,255,.4)}
+.hstrip .chip{width:46px;height:46px;border-radius:12px;display:grid;place-items:center}
+.hstrip .nm{font-weight:700;font-size:.96rem;color:#fff}
+.hstrip .en{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:#9fb6e6;text-transform:uppercase}
+@media(max-width:720px){.hstrip{grid-template-columns:repeat(5,1fr);gap:7px}
+  .hstrip a{padding:12px 4px}.hstrip .nm{font-size:.8rem}.hstrip .en{display:none}
+  .hstrip .chip{width:40px;height:40px}}
+
+/* symbol chips */
+.chip-grad{color:#fff}
+.k-keikaku{background:linear-gradient(135deg,var(--keikaku-tl),var(--keikaku-br))}
+.k-fuka{background:linear-gradient(135deg,var(--fuka-tl),var(--fuka-br))}
+.k-sekisai{background:linear-gradient(135deg,var(--sekisai-tl),var(--sekisai-br))}
+.k-zumen{background:linear-gradient(135deg,var(--zumen-tl),var(--zumen-br))}
+.k-keisoku{background:linear-gradient(135deg,var(--keisoku-tl),var(--keisoku-br))}
+
+/* ============================ generic section spacing ============================ */
+.band{padding:84px 0}
+.band.tint{background:var(--bg-tint)}
+.center{text-align:center}
+.center .eyebrow{justify-content:center}
+.center .lead{margin-inline:auto}
+
+/* value cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+@media(max-width:880px){.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid3{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;
+  transition:.2s;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c5d6f0}
+.card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;
+  background:var(--bg-tint2);color:var(--brand)}
+.card h3{color:var(--ink);font-size:1.12rem;font-weight:800;margin-bottom:.5em;line-height:1.5}
+.card p{font-size:.95rem;color:var(--body)}
+.card b{color:var(--ink)}
+
+/* challenges */
+.chal{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+@media(max-width:680px){.chal{grid-template-columns:1fr}}
+.chal .item{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px}
+.chal .q{font-family:var(--mono);font-weight:700;color:#fff;background:var(--ink);min-width:34px;height:34px;
+  border-radius:9px;display:grid;place-items:center;flex:none;font-size:.9rem}
+.chal h4{color:var(--ink);font-size:1.04rem;margin-bottom:.35em;font-weight:800}
+.chal p{font-size:.92rem}
+.chal-foot{margin-top:30px;background:linear-gradient(135deg,#fff,var(--bg-tint));border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px 28px;font-size:1rem;color:var(--ink)}
+.chal-foot b{color:var(--brand)}
+
+/* ============================ products ============================ */
+.products{display:grid;grid-template-columns:1fr;gap:22px;margin-top:46px}
+.prod{--c:var(--brand);--ctl:var(--keikaku-tl);--cbr:var(--keikaku-br);
+  display:grid;grid-template-columns:96px 1fr auto;gap:26px;align-items:start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;
+  position:relative;overflow:hidden;transition:.2s}
+.prod::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;
+  background:linear-gradient(var(--ctl),var(--cbr))}
+.prod:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:#c9d8f1}
+.prod .badge{width:84px;height:84px;border-radius:20px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--ctl),var(--cbr));box-shadow:0 12px 28px -12px var(--cbr)}
+.prod .head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prod h3{font-size:1.4rem;color:var(--ink);font-weight:800}
+.prod .tag{font-size:.92rem;color:var(--c);font-weight:700}
+.prod .en{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);align-self:center}
+.prod .desc{font-size:.96rem;margin:.7em 0 1em;color:var(--body)}
+.prod ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;margin-bottom:.4em}
+.prod li{font-size:.9rem;padding-left:20px;position:relative;color:var(--body)}
+.prod li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;
+  background:var(--c);opacity:.85}
+.prod .side{display:flex;flex-direction:column;gap:10px;min-width:172px;align-items:flex-start}
+.prod .price{font-size:1.42rem;font-weight:800;color:var(--ink);line-height:1.1}
+.prod .price small{display:block;font-size:.74rem;color:var(--muted);font-weight:600;margin-top:3px}
+.prod .price .yr{font-size:.84rem;color:var(--c);font-weight:700;margin-top:7px}
+.prod .plink{font-size:.86rem;font-weight:700;color:var(--c);display:inline-flex;align-items:center;gap:5px}
+.prod .plink:hover{gap:9px}
+.prod .open{background:linear-gradient(135deg,var(--ctl),var(--cbr));color:#fff;border-radius:999px;
+  padding:.62em 1.2em;font-weight:700;font-size:.9rem;transition:.18s}
+.prod .open:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.theme-keikaku{--c:var(--keikaku);--ctl:var(--keikaku-tl);--cbr:var(--keikaku-br)}
+.theme-fuka{--c:var(--fuka);--ctl:var(--fuka-tl);--cbr:var(--fuka-br)}
+.theme-sekisai{--c:var(--sekisai);--ctl:var(--sekisai-tl);--cbr:var(--sekisai-br)}
+.theme-zumen{--c:var(--zumen);--ctl:var(--zumen-tl);--cbr:var(--zumen-br)}
+.theme-keisoku{--c:var(--keisoku);--ctl:var(--keisoku-tl);--cbr:var(--keisoku-br)}
+@media(max-width:820px){
+  .prod{grid-template-columns:64px 1fr;padding:24px 22px 24px 26px}
+  .prod .badge{width:64px;height:64px;border-radius:16px}
+  .prod ul{grid-template-columns:1fr}
+  .prod .side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    border-top:1px dashed var(--line);padding-top:16px;margin-top:4px}
+  .prod .price{font-size:1.2rem}
+}
+
+/* color system strip */
+.swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:42px}
+@media(max-width:680px){.swatches{grid-template-columns:repeat(5,1fr);gap:8px}}
+.sw{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.sw .top{height:78px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.05rem}
+.sw .meta{padding:11px 12px}
+.sw .nm{font-weight:800;color:var(--ink);font-size:.9rem}
+.sw .hex{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:2px}
+@media(max-width:680px){.sw .meta{padding:7px 6px}.sw .nm{font-size:.72rem}.sw .hex{font-size:.6rem}
+  .sw .top{height:54px;font-size:.85rem}}
+
+/* ============================ message (founder) ============================ */
+.message{background:linear-gradient(180deg,var(--bg-tint),#fff)}
+.msg-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:46px clamp(24px,5vw,60px);
+  box-shadow:var(--shadow);position:relative;overflow:hidden}
+.msg-card::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%)}
+.msg-card .eyebrow{margin-bottom:14px}
+.msg-card h2{font-size:clamp(1.4rem,2.6vw,2rem)}
+.msg-card p{margin-bottom:1.1em;font-size:1.01rem;color:var(--body);max-width:74ch}
+.msg-card p:last-of-type{margin-bottom:0}
+.sign{margin-top:26px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:12px}
+
+/* ============================ pricing note ============================ */
+.note{margin-top:30px;display:grid;gap:8px;font-size:.92rem;color:var(--body);
+  background:var(--bg-tint);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px}
+.note b{color:var(--ink)}
+.note .small{font-size:.82rem;color:var(--muted)}
+
+/* ============================ FAQ ============================ */
+.faq{max-width:820px;margin:42px auto 0}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:12px;
+  overflow:hidden;transition:.2s}
+.faq details[open]{border-color:#c5d6f0;box-shadow:var(--shadow-sm)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;font-weight:700;color:var(--ink);
+  display:flex;align-items:center;gap:14px;font-size:1.01rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pl{margin-left:auto;width:22px;height:22px;flex:none;position:relative;transition:.2s}
+.faq summary .pl::before,.faq summary .pl::after{content:"";position:absolute;background:var(--brand);border-radius:2px}
+.faq summary .pl::before{left:0;top:10px;width:22px;height:2px}
+.faq summary .pl::after{left:10px;top:0;width:2px;height:22px;transition:.2s}
+.faq details[open] summary .pl::after{transform:rotate(90deg);opacity:0}
+.faq .ans{padding:0 24px 22px;color:var(--body);font-size:.96rem}
+
+/* ============================ contact ============================ */
+.contact{background:
+  radial-gradient(700px 360px at 85% 120%,rgba(124,58,237,.3),transparent 60%),
+  linear-gradient(135deg,var(--deep-tl),var(--keikaku-br));color:#fff;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;opacity:.4;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:46px 46px;
+  mask:linear-gradient(0deg,#000,transparent 85%)}
+.contact .wrap{position:relative;padding:80px 22px}
+.contact h2{color:#fff}
+.contact .lead{color:#d7e4ff}
+.line-btn{background:#06c755;color:#fff;font-weight:800;padding:1em 1.8em;border-radius:999px;
+  display:inline-flex;align-items:center;gap:10px;box-shadow:0 14px 34px -14px rgba(6,199,85,.8);transition:.18s}
+.line-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.contact-apps{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.contact-apps a{font-size:.85rem;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;
+  padding:.5em 1em;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+.contact-apps a:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.contact-apps .d{width:8px;height:8px;border-radius:50%}
+
+/* ============================ footer ============================ */
+footer{background:#0a1326;color:#aeb9d0;font-size:.9rem;padding:64px 0 30px}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px}
+@media(max-width:780px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fgrid{grid-template-columns:1fr}}
+footer h5{color:#fff;font-size:.82rem;letter-spacing:.06em;margin-bottom:14px;font-weight:700}
+footer a{color:#aeb9d0;transition:.15s;line-height:2.1}
+footer a:hover{color:#fff}
+.fbrand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:1.12rem;margin-bottom:12px}
+.fbrand .mark{width:30px;height:30px;font-size:17px;border-radius:8px}
+.fcols{display:flex;flex-direction:column}
+.copy{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#7d8aa8;font-size:.82rem}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}}
+</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -104,476 +377,7 @@
     ]
   }
   </script>
-</head>
-<body>
-  <!-- ===== Header ===== -->
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="スマコウバ ホーム">
-        <span class="brand-logo" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="36" height="36" role="img">
-            <defs>
-              <linearGradient id="hdr-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#6366f1" />
-                <stop offset="0.5" stop-color="#3b82f6" />
-                <stop offset="1" stop-color="#06b6d4" />
-              </linearGradient>
-            </defs>
-            <rect width="100" height="100" rx="24" fill="url(#hdr-grad)" />
-            <text x="47" y="72" text-anchor="middle" fill="#fff" font-size="68" font-weight="900" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">ス</text>
-          </svg>
-        </span>
-        <span class="brand-name">スマコウバ</span>
-      </a>
-
-      <nav class="nav" id="nav">
-        <a href="#products">製品</a>
-        <a href="#features">特長</a>
-        <a href="#pricing">料金</a>
-        <a href="#faq">FAQ</a>
-        <a href="#company">会社情報</a>
-        <a href="#contact" class="nav-cta">お問い合わせ</a>
-      </nav>
-
-      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <!-- ===== Hero ===== -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">中小製造業の、はじめやすい製造DX</p>
-        <h1>大きなシステムは、<br /><span class="grad-text">うちには大きすぎた。</span></h1>
-        <p class="lead">
-          高額な生産管理システムも、専任のIT人材も要りません。製造・調達の現場に身を置く作り手が、町工場でも今日から取り組める<strong>製造現場のDX（デジタル化）</strong>を、必要な機能だけ小さくまとめました。<br class="pc-only" />
-          <strong>料金は最初から明朗</strong>。月額／年額のシンプルな定額で、追加の初期費用や導入費はかかりません。<strong>導入の手順はアプリの標準機能</strong>なので、専門家がいなくても画面に沿って進めるだけ。登録すれば無料で試せて、気になる1つから、今のExcelや紙と併用しながら少しずつ始められます。
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#products">5つの製品を見る</a>
-          <a class="btn btn-ghost" href="#pricing">料金を見る</a>
-        </div>
-        <ul class="hero-badges">
-          <li>明朗な定額料金</li>
-          <li>導入ステップを標準搭載</li>
-          <li>登録だけ・無料で試せる</li>
-          <li>1アプリから・オフライン対応</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== Features / Why ===== -->
-    <section class="section section-soft" id="features">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">WHY スマコウバ</p>
-          <h2>「うちでも続けられる」を、いちばん大事にしました</h2>
-          <p class="section-sub">高機能で立派なソフトより、人もお金も限られた現場で、無理なく続けられること。中小製造業の現場目線で、機能をあえて絞りました。</p>
-        </div>
-
-        <div class="why-grid">
-          <div class="why-item">
-            <div class="why-icon" aria-hidden="true">🎯</div>
-            <h3>気になる1つから、小さく始める</h3>
-            <p><strong>5つのアプリは、どれも単体で使えます</strong>。全部まとめて導入する必要はありません。いちばん困っているところ1つから始めて、合いそうなら少しずつ広げる。それで十分です。</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon" aria-hidden="true">💳</div>
-            <h3>料金は、はじめから明朗</h3>
-            <p>アプリごとの、シンプルな定額制。大きな初期費用も、導入費の上乗せも、長い契約の縛りもありません。かかる費用が最初から見えるので、社内の稟議も通しやすい。お支払いはクレジットカード決済（Stripe）、合わなければいつでも解約できます。</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon" aria-hidden="true">📱</div>
-            <h3>導入ステップが標準。専任担当はいらない</h3>
-            <p>難しい初期設定も、サーバーの用意も要りません。<strong>導入の手順をアプリの標準機能として用意</strong>しているので、画面に沿って進めるだけで使い始められます。スマホやタブレットがあれば、いつもの担当者がそのまま手に取れる操作感です。</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon" aria-hidden="true">🖨️</div>
-            <h3>紙もホワイトボードも、捨てなくていい</h3>
-            <p>いきなり完全ペーパーレスは目指しません。積載指示・生産計画・日報から、<strong>見積書や機器台帳</strong>まで、必要なものはPDFや印刷で出力できます。今の紙やホワイトボードの運用と併用しながら、Excelから自然に脱却していけます。</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon" aria-hidden="true">📶</div>
-            <h3>電波が弱くても、止まらない</h3>
-            <p>倉庫の奥、トラックの車内、電波の届きにくい工場でも。<strong>積載と図面はオフライン対応</strong>で、ネットが無くても表示・入力ができます。とくに図面はデータを端末の外に出さないので、情報漏れの心配も小さく。現場の「使いたい時に使えない」を、できるだけ無くしました。</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon" aria-hidden="true">🔗</div>
-            <h3>必要なら、シリーズでそろえる</h3>
-            <p>5つのアプリは、それぞれ現場の別の工程をカバーします。計画→負荷→積載で計画から出荷まで、図面・計測で図番や設備まわりまで。同じ使い心地でそろえられるので、現場の負担が少なく済みます。もちろん、1つだけでも十分に役立ちます。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Founder message ===== -->
-    <section class="section" id="founder">
-      <div class="container">
-        <div class="founder-box">
-          <span class="founder-quote" aria-hidden="true">"</span>
-          <p class="section-eyebrow">MESSAGE</p>
-          <h2>売る側ではなく、同じ現場の側から</h2>
-          <div class="founder-body">
-            <p>このアプリを作っているのは、いまも製造業の生産・調達の実務に身を置いている人間です。立派なIT企業でも、製造業を外から眺めるコンサルでもありません。</p>
-            <p>私自身、長年にわたって製造業の調達に携わり、国内外での工場立ち上げにも関わってきました。大企業から中小の現場まで、さまざまなモノづくりの実務を見てきた人間です。図番と向き合い、資材を手配し、トラックの段取りに頭を悩ませる――皆さんと等身大の、同じ現場の一員です。</p>
-            <p>これまで多くの現場に関わる中で、日本のモノづくりの素晴らしさを肌で感じると同時に、中小企業の方々の現場に共通する「悩み」に直面してきました。大企業は多額のコストをかけて立派なシステムを構築してきましたが、今となっては複雑化し、レガシー（時代遅れ）化してしまっている側面もあります。一方で、多機能すぎる高価なシステムは導入できず、現場の工夫と努力で「今まで耐えに耐えてきた」のが中小企業の方々の現状ではないでしょうか。</p>
-            <p>「もっと小さく、もっと安く、片手間でも回せるものが、なぜ無いんだろう」。その不満が、このアプリの出発点です。そして今、ようやくこうしたローコストで現場発のアプリが開発できる「時代が追いついてきた」と、私はとても前向きに捉えています。だからこそ機能は、自分たちが現場で本当に使うものだけに絞りました。</p>
-            <p>紙やホワイトボードを、いきなり全部なくす必要はありません。慣れたやり方は続けながら、必要なところだけ数字で見える化していけばいい。出力はPDFや印刷もできるので、今の運用にそっと足していけます。電波の弱い倉庫や車内、工場でも使えるように。私自身がそう使いたかったから、そう作りました。</p>
-            <p>うまい言葉で売り込むつもりはありませんし、ここには何の利害関係もありません。だからこそ、同じように現場で悩む多くの方々に、まずは自由に使ってみてほしいと思っています。合わなければ、離れてもらって構いません。「これなら始められた」と思っていただけたら、皆さんの声を聞きながら、一緒にもっと良いものへと育てていきたいと思っています。</p>
-            <p>気になることがあれば、メールやLINEでお気軽にどうぞ。順次お返事します。</p>
-          </div>
-          <p class="founder-sign">スマコウバ運営事務局 ／ 製造・調達の現場より</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Challenges (pain) ===== -->
-    <section class="section section-soft" id="challenges">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">CHALLENGES</p>
-          <h2>「うちみたいな規模じゃ、無理だよな」と諦めていませんか</h2>
-          <p class="section-sub">立派な生産管理システムの話は、何度も聞いた。でも、価格表を見て、機能の多さを見て——結局いつも同じ結論にたどり着く。大きな工場の話ではなく、いつもの自分たちの現場の話です。下のどれかに「うちもだ」と思ったなら、たぶん同じところで立ち止まっています。</p>
-        </div>
-
-        <div class="pain-grid">
-          <div class="pain-card">
-            <span class="pain-mark" aria-hidden="true">!?</span>
-            <h3>高くて、多機能すぎて、見送ってきた</h3>
-            <p>見積りを見て、機能の多さに圧倒されて、専任担当も初期費用も用意できなくて。うちの規模には明らかに大きすぎる。何度か検討しては、そのたびに画面を閉じてきた。</p>
-          </div>
-          <div class="pain-card">
-            <span class="pain-mark" aria-hidden="true">!?</span>
-            <h3>IT・情シスの専任がいない</h3>
-            <p>詳しい誰かが本業の合間に手を動かして、なんとか保たせている。設定やマスタ登録を任せられる人もいない。その人が休むと、とたんに回らなくなる。</p>
-          </div>
-          <div class="pain-card">
-            <span class="pain-mark" aria-hidden="true">!?</span>
-            <h3>あのExcelは、もう本人しか触れない</h3>
-            <p>何年もかけて作り込んだ計画表や台帳。関数もマクロも作った人の頭の中。壊すのが怖くて誰も手を出せず、引き継ぎのたびに胃が痛い。</p>
-          </div>
-          <div class="pain-card">
-            <span class="pain-mark" aria-hidden="true">!?</span>
-            <h3>ホワイトボードと紙が、行き違う</h3>
-            <p>予定が変わるたびに消して、書いて、また消して。指示書も日報も紙で回すと、最新がどれか分からなくなる。読み間違い、書き忘れ、「聞いてない」。気づいたときには手戻り。</p>
-          </div>
-        </div>
-
-        <div class="pain-bridge">
-          <p>足りないのは「もっと高機能なシステム」ではなく、<strong>うちの規模のままで、今日から無理なく始められる道具</strong>のほう。全部を一度に変えなくていい。今のやり方と併用しながら、いちばん困っているところから1つだけ、小さく始められます。スマコウバは、その「諦めてきた理由」をひとつずつ外していくために作りました。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Products ===== -->
-    <section class="section" id="products">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">PRODUCTS</p>
-          <h2>5つのアプリで、現場の数字を動かす</h2>
-          <p class="section-sub">単体でも、組み合わせても。現場の困りごとに合わせて選べます。</p>
-        </div>
-
-        <div class="product-grid">
-          <!-- 計画 -->
-          <article class="product-card accent-indigo">
-            <div class="product-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="17" rx="2" /><path d="M3 9h18M8 2v4M16 2v4" /><path d="M7 14l2.5 2.5L14 12" />
-              </svg>
-            </div>
-            <h3>スマコウバ計画</h3>
-            <p class="product-tag">生産計画・所要量・在庫の見える化</p>
-            <p class="product-desc">
-              品目・図番マスタをもとに、月次の生産計画を自動で組み立て。
-              MRPによる資材所要量計算から、調達先ごとの部材手配計画までをカバーします。
-              在庫月数や平準化もシミュレーションでき、ムリ・ムダのない計画づくりを支えます。
-            </p>
-            <ul class="feature-list">
-              <li>生産計画の立案・平準化（レベリング）</li>
-              <li>資材所要量計算（MRP）</li>
-              <li>調達先ごとの部材手配計画</li>
-              <li>在庫月数の見える化（不足・過剰アラート）</li>
-              <li>月次計画・シミュレーション</li>
-              <li>マスタ管理・CSVで入出力</li>
-            </ul>
-            <p class="product-guide-link"><a href="/guide/plan-excel.html">関連記事：エクセルの生産計画の属人化から抜け出す →</a></p>
-            <div class="product-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
-              <a class="btn btn-sm btn-line" href="https://sumakouba-production-plan.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
-            </div>
-          </article>
-
-          <!-- 負荷 -->
-          <article class="product-card accent-cyan">
-            <div class="product-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21a9 9 0 1 1 9-9" /><path d="M12 12l4-2.5" /><path d="M3.5 12H6M18 12h2.5M12 5.5V7" />
-              </svg>
-            </div>
-            <h3>スマコウバ負荷</h3>
-            <p class="product-tag">設備と人の工数（設備負荷）を見える化</p>
-            <p class="product-desc">
-              月の必要数を稼働日数で割り、日々の生産計画に必要な設備負荷と工数（人員配置）を自動で計算。
-              現場に生産管理板を置いて実績を報告しながら、可動率・不良率を見える化し、
-              継続的な改善につなげられます。
-            </p>
-            <ul class="feature-list">
-              <li>月の必要数÷稼働日で設備負荷・工数（人員配置）を自動計算</li>
-              <li>AI日程計画（スケジューリング）</li>
-              <li>生産管理板で実績報告→改善（日報）</li>
-              <li>品質管理（不良・パレート図）</li>
-              <li>月次PDFレポート・CSV／JSON入出力</li>
-            </ul>
-            <p class="product-guide-link"><a href="/guide/load-yamazumi.html">関連記事：設備と人の負荷を山積み表で見える化する →</a></p>
-            <div class="product-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
-              <a class="btn btn-sm btn-line" href="https://sumakouba-production-load-calc.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
-            </div>
-          </article>
-
-          <!-- 積載 -->
-          <article class="product-card accent-blue">
-            <div class="product-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 3h13v10H1z" /><path d="M14 7h4l3 3v3h-7z" /><circle cx="5.5" cy="17" r="2" /><circle cx="17.5" cy="17" r="2" />
-              </svg>
-            </div>
-            <h3>スマコウバ積載</h3>
-            <p class="product-tag">トラック積載の計画・可視化・指示</p>
-            <p class="product-desc">
-              出荷拠点ごとの必要在庫に対して、生産したものをどれだけ送ればよいかを自動で計算。
-              その出荷量を、どのトラックに何をどう積むかまで割り付け、
-              荷台レイアウト図と積込チェックリストをPDFでドライバーへ共有できます。
-            </p>
-            <ul class="feature-list">
-              <li>拠点別の必要在庫から出荷量を自動計算（配分）</li>
-              <li>トラック積載の自動算出（必要台数・車種）</li>
-              <li>荷台レイアウトの可視化（2段積み対応）</li>
-              <li>積込チェックリストをPDF・印刷</li>
-              <li>バーコード／QRで積込確認・誤積み防止</li>
-              <li>オフライン対応・複数端末で同期</li>
-            </ul>
-            <p class="product-guide-link"><a href="/guide/sekisai-shiji.html">関連記事：トラックの積み込み順を指示書で可視化する →</a></p>
-            <div class="product-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
-              <a class="btn btn-sm btn-line" href="https://sumakouba-truck-loader.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
-            </div>
-          </article>
-
-          <article class="product-card accent-teal">
-            <div class="product-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 3h9l5 5v13H5z" /><path d="M14 3v5h5" /><path d="M8 13h8M8 17h5" />
-              </svg>
-            </div>
-            <h3>スマコウバ図面</h3>
-            <p class="product-tag">図面・図番を端末内だけで管理（クラウド送信なし）</p>
-            <p class="product-desc">
-              紙やファイルで探し回る図面管理から卒業。図面PDF・画像を読み取って図番／品名／材質などを自動入力し、
-              キーワードで検索できます。過去の類似品を呼び出して見積書（PDF）もすぐ作成。
-              図面データは端末内に保存し、クラウドには送りません。
-            </p>
-            <ul class="feature-list">
-              <li>図面の読み取りで自動入力・まとめて取込（端末内OCR）</li>
-              <li>紙・ファイル管理から卒業＝キーワードで検索</li>
-              <li>過去の類似品を呼び出して見積を作成</li>
-              <li>見積作成（金額・消費税を自動計算／見積書PDF）・履歴管理</li>
-              <li>アカウント登録で利用・図面は端末内保存（クラウド送信なし）</li>
-            </ul>
-            <p class="product-guide-link"><a href="/guide/zumen-offline.html">関連記事：図面をクラウドに上げず、端末内だけで管理する方法 →</a></p>
-            <div class="product-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">アプリを見る</a>
-              <a class="btn btn-sm btn-line" href="#contact">お問い合わせ</a>
-            </div>
-          </article>
-
-          <!-- 計測 -->
-          <article class="product-card accent-amber">
-            <div class="product-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22a9 9 0 1 1 9-9" /><path d="M16.2 7.8 12 12" /><path d="M12 6V4M6 12H4M7.8 7.8 6.4 6.4" />
-              </svg>
-            </div>
-            <h3>スマコウバ計測</h3>
-            <p class="product-tag">計測機器の台帳・校正期限アラート・貸出を一元管理</p>
-            <p class="product-desc">
-              機器の型番・メーカー・保管場所・校正証明書PDFをまとめて管理。次回校正日を自動計算し、
-              期限が近づくとアラートメールで通知。QRコードや管理番号の手入力で、誰が・どこで・何を使っているかをリアルタイムで把握できます。
-            </p>
-            <ul class="feature-list">
-              <li>機器台帳・書類（取説／校正証明書PDF）管理</li>
-              <li>校正・点検期限の自動計算＋アラートメール</li>
-              <li>QR／手入力での貸出・所在管理</li>
-              <li>テプラ用ラベル印刷（QR付き）・CSV／PDF出力</li>
-              <li>1拠点・ユーザー数無制限</li>
-            </ul>
-            <p class="product-guide-link"><a href="/guide/keisoku-calib.html">関連記事：計測機器の校正期限を忘れない一元管理術 →</a></p>
-            <div class="product-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-keisoku.vercel.app/login" target="_blank" rel="noopener">アプリを見る</a>
-              <a class="btn btn-sm btn-line" href="#contact">お問い合わせ</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Pricing ===== -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">PRICING</p>
-          <h2>料金プラン</h2>
-          <p class="section-sub">アプリごとに、月額／年額のシンプルな1プラン。必要なアプリだけ、単体でご契約いただけます。</p>
-        </div>
-
-        <div class="pricing-apps">
-          <!-- 計画 -->
-          <div class="price-app accent-indigo">
-            <h3>スマコウバ計画</h3>
-            <ul class="tier-list">
-              <li class="tier">
-                <div class="tier-top"><span class="tier-name">月額プラン</span><span class="tier-price">¥29,800<small>／月</small></span></div>
-                <p class="tier-sub">30日間の無料トライアル後 ／ 生産計画・所要量(MRP)・在庫の見える化・シミュレーション</p>
-              </li>
-              <li class="tier is-rec">
-                <div class="tier-top"><span class="tier-name">年額プラン<em>おトク</em></span><span class="tier-price">¥298,000<small>／年</small></span></div>
-                <p class="tier-sub">月額の約10ヶ月分（2ヶ月分お得）／ 機能は月額と同じ</p>
-              </li>
-            </ul>
-            <div class="price-app-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-plan.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
-              <a class="btn btn-sm btn-line" href="https://sumakouba-production-plan.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
-            </div>
-          </div>
-
-          <!-- 負荷 -->
-          <div class="price-app accent-cyan">
-            <h3>スマコウバ負荷</h3>
-            <ul class="tier-list">
-              <li class="tier">
-                <div class="tier-top"><span class="tier-name">月額プラン</span><span class="tier-price">¥19,800<small>／月</small></span></div>
-                <p class="tier-sub">30日間の無料トライアル後 ／ 設備・人の負荷の見える化・工数/要員計画・レポート</p>
-              </li>
-              <li class="tier is-rec">
-                <div class="tier-top"><span class="tier-name">年額プラン<em>おトク</em></span><span class="tier-price">¥198,000<small>／年</small></span></div>
-                <p class="tier-sub">月額の約10ヶ月分（2ヶ月分お得）／ 機能は月額と同じ</p>
-              </li>
-            </ul>
-            <div class="price-app-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-production-load-calc.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
-              <a class="btn btn-sm btn-line" href="https://sumakouba-production-load-calc.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
-            </div>
-          </div>
-
-          <!-- 積載 -->
-          <div class="price-app accent-blue">
-            <h3>スマコウバ積載</h3>
-            <ul class="tier-list">
-              <li class="tier">
-                <div class="tier-top"><span class="tier-name">月額プラン</span><span class="tier-price">¥19,800<small>／月</small></span></div>
-                <p class="tier-sub">30日間の無料トライアル後 ／ 積載計画・荷台レイアウト・PDF/CSV出力・クラウド同期</p>
-              </li>
-              <li class="tier is-rec">
-                <div class="tier-top"><span class="tier-name">年額プラン<em>おトク</em></span><span class="tier-price">¥198,000<small>／年</small></span></div>
-                <p class="tier-sub">月額の約10ヶ月分（2ヶ月分お得）／ 機能は月額と同じ</p>
-              </li>
-            </ul>
-            <div class="price-app-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-truck-loader.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
-              <a class="btn btn-sm btn-line" href="https://sumakouba-truck-loader.vercel.app/contact" target="_blank" rel="noopener">お問い合わせ</a>
-            </div>
-          </div>
-
-          <!-- 図面 -->
-          <div class="price-app accent-teal">
-            <h3>スマコウバ図面</h3>
-            <ul class="tier-list">
-              <li class="tier">
-                <div class="tier-top"><span class="tier-name">月額プラン</span><span class="tier-price">¥19,800<small>／月</small></span></div>
-                <p class="tier-sub">30日間の無料トライアル後 ／ 図面の登録・検索・OCR自動入力・見積作成（すべて端末内保存）</p>
-              </li>
-              <li class="tier is-rec">
-                <div class="tier-top"><span class="tier-name">年額プラン<em>おトク</em></span><span class="tier-price">¥198,000<small>／年</small></span></div>
-                <p class="tier-sub">月額の約10ヶ月分（2ヶ月分お得）／ 機能は月額と同じ</p>
-              </li>
-            </ul>
-            <div class="price-app-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-zumen.vercel.app/pricing.html" target="_blank" rel="noopener">料金の詳細</a>
-              <a class="btn btn-sm btn-line" href="#contact">お問い合わせ</a>
-            </div>
-          </div>
-
-          <!-- 計測 -->
-          <div class="price-app accent-amber">
-            <h3>スマコウバ計測</h3>
-            <ul class="tier-list">
-              <li class="tier">
-                <div class="tier-top"><span class="tier-name">月額プラン</span><span class="tier-price">¥19,800<small>／月</small></span></div>
-                <p class="tier-sub">30日間の無料トライアル後 ／ 機器台帳・校正期限管理・アラートメール・貸出QR・CSV／PDF出力</p>
-              </li>
-              <li class="tier is-rec">
-                <div class="tier-top"><span class="tier-name">年額プラン<em>おトク</em></span><span class="tier-price">¥198,000<small>／年</small></span></div>
-                <p class="tier-sub">月額の約10ヶ月分（2ヶ月分お得）／ 機能は月額と同じ</p>
-              </li>
-            </ul>
-            <div class="price-app-actions">
-              <a class="btn btn-sm btn-primary" href="https://sumakouba-keisoku.vercel.app/pricing" target="_blank" rel="noopener">料金の詳細</a>
-              <a class="btn btn-sm btn-line" href="#contact">お問い合わせ</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-note">
-          <p>・各アプリとも、まずは<strong>無料でお試し</strong>いただけます（30日間の無料トライアル・お試しにクレジットカードは不要）。</p>
-          <p>・お支払いは<strong>クレジットカード決済</strong>に対応しています。</p>
-          <p>・サポートは<strong>メール</strong>で承ります（平日日中の電話・訪問でのご対応はいたしかねます。順次ご返信します）。</p>
-          <p class="pricing-note-fine">※ 価格はすべて税別。年額は月額の約10ヶ月分（2ヶ月分お得）。最新の料金・全機能は各アプリの料金ページをご確認ください。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="section section-soft" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">FAQ</p>
-          <h2>よくあるご質問</h2>
-          <p class="section-sub">導入前によくいただくご質問をまとめました。ここに無いことは、メールやLINEでお気軽にどうぞ。</p>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>1つのアプリだけ使えますか？</summary>
-            <div class="faq-body"><p>はい。気になる1つから単体でご利用いただけます。5つをまとめて導入する必要はありません。いちばん困っているところ1つから始めて、合いそうなら少しずつ広げられます。</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>今使っているExcelや紙と併用できますか？</summary>
-            <div class="faq-body"><p>できます。いきなり全面移行ではなく、必要なものはPDFや印刷で出力できるので、今の紙・ホワイトボード・Excelの運用と併用しながら、少しずつデジタル化していけます。</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>電波が弱い工場や倉庫でも使えますか？</summary>
-            <div class="faq-body"><p>積載と図面はオフラインに対応しており、ネットが届かない車内・倉庫・工場の奥でも表示・入力ができます。とくに図面はデータを端末の外に出さないため、情報漏えいの不安も小さく抑えられます。</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>料金と支払い方法を教えてください。</summary>
-            <div class="faq-body"><p>アプリごとの月額／年額の明朗な定額制です（多くのアプリは月額1万9,800円、計画は月額2万9,800円・いずれも税別）。大きな初期費用や導入費はかかりません。お支払いはクレジットカード決済（Stripe）に対応しています。</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>無料で試せますか？解約はできますか？</summary>
-            <div class="faq-body"><p>はい。登録するだけで30日間無料でお試しいただけます（お試しにクレジットカードは不要）。長期契約の縛りはなく、合わなければいつでも解約できます。</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>パソコンが苦手でも導入できますか？</summary>
-            <div class="faq-body"><p>難しい初期設定やサーバーの用意は不要です。導入の手順をアプリの標準機能として用意しているので、画面に沿って進めるだけで使い始められます。スマホやタブレットがあれば、いつもの担当者がそのまま手に取れる操作感です。</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <script type="application/ld+json">
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -593,109 +397,392 @@
       ]
     }
     </script>
+</head>
+<body>
 
-    <!-- ===== Contact CTA ===== -->
-    <section class="section section-cta" id="contact">
-      <div class="container">
-        <div class="cta-box">
-          <h2>導入のご相談・お問い合わせはお気軽に</h2>
-          <p>いちばん手軽なのは LINE です。友だち追加してメッセージを送るだけ。料金やお試し、どのアプリが合うかなど、お気軽にどうぞ。</p>
-          <a class="line-btn" href="https://line.me/R/ti/p/%40926yxdlw" target="_blank" rel="noopener" aria-label="LINEで相談する（友だち追加）">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-              <path d="M12 2.2c-5.52 0-10 3.64-10 8.13 0 4.02 3.55 7.39 8.35 8.03.32.07.77.21.88.49.1.25.07.64.03.9l-.14.86c-.04.25-.2.99.87.54s5.76-3.39 7.86-5.81c1.45-1.59 2.15-3.2 2.15-5.01 0-4.49-4.48-8.13-10-8.13Z"/>
-            </svg>
-            <span>LINEで相談する（友だち追加）</span>
-          </a>
-          <p class="cta-or">または、各アプリのお問い合わせフォームから</p>
-          <div class="cta-grid">
-            <a class="cta-link accent-indigo" href="https://sumakouba-production-plan.vercel.app/contact" target="_blank" rel="noopener">
-              <span class="cta-link-name">スマコウバ計画</span>
-              <span class="cta-link-sub">Excel頼み・欠品をなくしたい → 相談する</span>
-            </a>
-            <a class="cta-link accent-cyan" href="https://sumakouba-production-load-calc.vercel.app/contact" target="_blank" rel="noopener">
-              <span class="cta-link-name">スマコウバ負荷</span>
-              <span class="cta-link-sub">設備と人の負荷を見える化したい → 相談する</span>
-            </a>
-            <a class="cta-link accent-blue" href="https://sumakouba-truck-loader.vercel.app/contact" target="_blank" rel="noopener">
-              <span class="cta-link-name">スマコウバ積載</span>
-              <span class="cta-link-sub">拠点への配分・積載を自動化したい → 相談する</span>
-            </a>
-            <a class="cta-link accent-teal" href="https://sumakouba-zumen.vercel.app/contact.html" target="_blank" rel="noopener">
-              <span class="cta-link-name">スマコウバ図面</span>
-              <span class="cta-link-sub">あの図面どこ？検索と見積 → 相談する</span>
-            </a>
-            <a class="cta-link accent-amber" href="https://sumakouba-keisoku.vercel.app/contact" target="_blank" rel="noopener">
-              <span class="cta-link-name">スマコウバ計測</span>
-              <span class="cta-link-sub">校正期限を切らさず管理したい → 相談する</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- ============================ HEADER ============================ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand-lk" href="#top"><span class="mark">ス</span>スマコウバ</a>
+    <nav class="nav-links">
+      <a href="#products">製品</a>
+      <a href="#why">特長</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">FAQ</a>
+      <a href="#company">会社情報</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="#products">製品を見る</a>
+    <a class="btn btn-primary" href="#contact">相談する</a>
+  </div>
+</header>
 
-    <!-- ===== Company ===== -->
-    <section class="section section-soft" id="company">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">COMPANY</p>
-          <h2>会社情報</h2>
-        </div>
-        <dl class="company-table">
-          <div><dt>運営</dt><dd>スマコウバ運営事務局</dd></div>
-          <div><dt>事業内容</dt><dd>中小製造業向け業務アプリ「スマコウバ」シリーズ（計画・負荷・積載・図面・計測）の開発・運営</dd></div>
-          <div><dt>提供サービス</dt><dd>スマコウバ計画 ／ スマコウバ負荷 ／ スマコウバ積載 ／ スマコウバ図面 ／ スマコウバ計測</dd></div>
-          <div><dt>お問い合わせ</dt><dd>各アプリの<a href="#contact">お問い合わせフォーム</a>よりご連絡ください</dd></div>
-        </dl>
-      </div>
-    </section>
-  </main>
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <div class="wrap">
+    <span class="eyebrow on-dark">中小製造業の、はじめやすい製造DX</span>
+    <h1>大きなシステムは、<br><span class="am">うちには</span>大きすぎた。</h1>
+    <p class="sub">高額な生産管理システムも、専任のIT人材も要りません。製造・調達の現場に身を置く作り手が、町工場でも今日から取り組める現場のデジタル化を、必要な機能だけ小さくまとめました。料金は最初から明朗。登録すれば無料で試せて、気になる1つから、今のExcelや紙と併用しながら始められます。</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#products">5つの製品を見る</a>
+      <a class="btn btn-ghost on-dark" href="#pricing">料金を見る</a>
+    </div>
+    <div class="trust">
+      <span><i class="dot"></i>明朗な定額料金</span>
+      <span><i class="dot"></i>導入ステップを標準搭載</span>
+      <span><i class="dot"></i>登録だけ・無料で試せる</span>
+      <span><i class="dot"></i>1アプリから・オフライン対応</span>
+    </div>
 
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-name">スマコウバ</span>
-        <p>中小製造業の現場を、データで支える。</p>
+    <div class="hstrip">
+      <a href="#products">
+        <span class="chip k-keikaku"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="13" width="3.6" height="7" rx="1.2" fill="#fff"/><rect x="8.2" y="9.5" width="3.6" height="10.5" rx="1.2" fill="#fff"/><rect x="13.4" y="6" width="3.6" height="14" rx="1.2" fill="#fff"/><rect x="18.6" y="3.4" width="2.4" height="16.6" rx="1" fill="#fff"/></svg></span>
+        <span class="nm">計画</span><span class="en">Plan</span></a>
+      <a href="#products">
+        <span class="chip k-fuka"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="3.4" rx="1.6" fill="#fff"/><rect x="6" y="10.3" width="12" height="3.4" rx="1.6" fill="#fff"/><rect x="8" y="15.6" width="8" height="3.4" rx="1.6" fill="#fff"/></svg></span>
+        <span class="nm">負荷</span><span class="en">Load</span></a>
+      <a href="#products">
+        <span class="chip k-sekisai"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="2.5" y="7" width="11" height="8.6" rx="1.4"/><path d="M13.5 9.4h3.1l2.9 3v3.2h-6z"/><circle cx="7" cy="17.6" r="2.1"/><circle cx="16.4" cy="17.6" r="2.1"/></svg></span>
+        <span class="nm">積載</span><span class="en">Load plan</span></a>
+      <a href="#products">
+        <span class="chip k-zumen"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5z" fill="#fff"/><path d="M14 3l5 5h-5z" fill="rgba(0,0,0,.18)"/><path d="M8 13h8M8 16h8" stroke="#21314f" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="18.4" r="0" fill="none"/></svg></span>
+        <span class="nm">図面</span><span class="en">Drawings</span></a>
+      <a href="#products">
+        <span class="chip k-keisoku"><svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#fff"/><g stroke="#6d28d9" stroke-width="1.2" stroke-linecap="round"><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4"/></g><path d="M12 12l4-3" stroke="#6d28d9" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="1.7" fill="#6d28d9"/></svg></span>
+        <span class="nm">計測</span><span class="en">Measure</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WHY ============================ -->
+<section class="band" id="why">
+  <div class="wrap center reveal">
+    <span class="eyebrow">WHY スマコウバ</span>
+    <h2 class="sec">「うちでも続けられる」を、いちばん大事にしました</h2>
+    <p class="lead">高機能で立派なソフトより、人もお金も限られた現場で、無理なく続けられること。中小製造業の現場目線で、機能をあえて絞りました。</p>
+  </div>
+  <div class="wrap">
+    <div class="grid3">
+      <div class="card reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+        <h3>気になる1つから、小さく始める</h3>
+        <p><b>5つのアプリは、どれも単体で使えます。</b>全部まとめて導入する必要はありません。いちばん困っているところ1つから始めて、合いそうなら少しずつ広げる。それで十分です。</p>
       </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>製品</h4>
-          <a href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">スマコウバ計画</a>
-          <a href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">スマコウバ負荷</a>
-          <a href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">スマコウバ積載</a>
-          <a href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">スマコウバ図面</a>
-          <a href="https://sumakouba-keisoku.vercel.app" target="_blank" rel="noopener">スマコウバ計測</a>
-        </div>
-        <div class="footer-col">
-          <h4>サイト内</h4>
-          <a href="#products">製品</a>
-          <a href="#pricing">料金</a>
-          <a href="#faq">FAQ</a>
-          <a href="#company">会社情報</a>
-          <a href="#contact">お問い合わせ</a>
-        </div>
-        <div class="footer-col">
-          <h4>お役立ち情報</h4>
-          <a href="/guide/keisoku-calib.html">計測機器の校正期限管理</a>
-          <a href="/guide/zumen-offline.html">図面をクラウドに上げず管理</a>
-          <a href="/guide/sekisai-shiji.html">トラック積み込み順の指示</a>
-          <a href="/guide/plan-excel.html">生産計画の脱エクセル・属人化</a>
-          <a href="/guide/load-yamazumi.html">設備負荷の見える化・山積み</a>
-        </div>
-        <div class="footer-col">
-          <h4>プライバシー</h4>
-          <a href="https://sumakouba-truck-loader.vercel.app/privacy" target="_blank" rel="noopener">積載のポリシー</a>
-          <a href="https://sumakouba-production-plan.vercel.app/privacy" target="_blank" rel="noopener">計画のポリシー</a>
-          <a href="https://sumakouba-production-load-calc.vercel.app/privacy" target="_blank" rel="noopener">負荷のポリシー</a>
-          <a href="https://sumakouba-keisoku.vercel.app/privacy" target="_blank" rel="noopener">計測のポリシー</a>
-        </div>
+      <div class="card reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h3>料金は、はじめから明朗</h3>
+        <p>アプリごとの、シンプルな定額制。大きな初期費用も、導入費の上乗せも、長い契約の縛りもありません。費用が最初から見えるので、社内の稟議も通しやすい。合わなければいつでも解約できます。</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></div>
+        <h3>導入ステップが標準。専任担当はいらない</h3>
+        <p>難しい初期設定も、サーバーの用意も要りません。<b>導入の手順をアプリの標準機能として用意</b>しているので、画面に沿って進めるだけ。スマホやタブレットがあれば、いつもの担当者がそのまま手に取れます。</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg></div>
+        <h3>紙もホワイトボードも、捨てなくていい</h3>
+        <p>いきなり完全ペーパーレスは目指しません。積載指示・生産計画・日報から<b>見積書や機器台帳</b>まで、必要なものはPDFや印刷で出力できます。今の運用と併用しながら、Excelから自然に脱却していけます。</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9c6-5 14-5 20 0M5 13c4-3 10-3 14 0M8.5 16.5c2-1.4 5-1.4 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>電波が弱くても、止まらない</h3>
+        <p>倉庫の奥、トラックの車内、電波の届きにくい工場でも。<b>積載と図面はオフライン対応</b>で、ネットが無くても表示・入力ができます。とくに図面はデータを端末の外に出さないので、情報漏れの心配も小さく。</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 7a3 3 0 0 1 3-3h0a3 3 0 0 1 0 6M15 17a3 3 0 0 1-3 3h0a3 3 0 0 1 0-6"/><path d="M8.5 9.5l7 5"/></svg></div>
+        <h3>必要なら、シリーズでそろえる</h3>
+        <p>5つのアプリは、それぞれ現場の別の工程をカバーします。計画→負荷→積載で計画から出荷まで、図面・計測で図番や設備まわりまで。同じ使い心地でそろえられるので、現場の負担が少なく済みます。</p>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <small>© <span id="year">2026</span> スマコウバ運営事務局　｜　<a href="/tokushoho.html">特定商取引法に基づく表記</a></small>
-    </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- ============================ CHALLENGES ============================ -->
+<section class="band tint" id="challenges">
+  <div class="wrap reveal">
+    <span class="eyebrow">CHALLENGES</span>
+    <h2 class="sec">「うちみたいな規模じゃ、無理だよな」と諦めていませんか</h2>
+    <p class="lead">立派な生産管理システムの話は、何度も聞いた。でも価格表を見て、機能の多さを見て——結局いつも同じ結論にたどり着く。下のどれかに「うちもだ」と思ったなら、たぶん同じところで立ち止まっています。</p>
+  </div>
+  <div class="wrap">
+    <div class="chal">
+      <div class="item reveal"><div class="q">!?</div><div><h4>高くて、多機能すぎて、見送ってきた</h4><p>見積りを見て、機能の多さに圧倒されて、専任担当も初期費用も用意できなくて。うちの規模には明らかに大きすぎる。何度か検討しては、そのたびに画面を閉じてきた。</p></div></div>
+      <div class="item reveal"><div class="q">!?</div><div><h4>IT・情シスの専任がいない</h4><p>詳しい誰かが本業の合間に手を動かして、なんとか保たせている。設定やマスタ登録を任せられる人もいない。その人が休むと、とたんに回らなくなる。</p></div></div>
+      <div class="item reveal"><div class="q">!?</div><div><h4>あのExcelは、もう本人しか触れない</h4><p>何年もかけて作り込んだ計画表や台帳。関数もマクロも作った人の頭の中。壊すのが怖くて誰も手を出せず、引き継ぎのたびに胃が痛い。</p></div></div>
+      <div class="item reveal"><div class="q">!?</div><div><h4>ホワイトボードと紙が、行き違う</h4><p>予定が変わるたびに消して、書いて、また消して。指示書も日報も紙で回すと、最新がどれか分からなくなる。読み間違い、書き忘れ、「聞いてない」。気づいたときには手戻り。</p></div></div>
+    </div>
+    <div class="chal-foot reveal">足りないのは「もっと高機能なシステム」ではなく、<b>うちの規模のままで、今日から無理なく始められる道具</b>のほう。全部を一度に変えなくていい。今のやり方と併用しながら、いちばん困っているところから1つだけ、小さく始められます。</div>
+  </div>
+</section>
+
+<!-- ============================ PRODUCTS ============================ -->
+<section class="band" id="products">
+  <div class="wrap reveal">
+    <span class="eyebrow">PRODUCTS</span>
+    <h2 class="sec">5つのアプリで、現場の数字を動かす</h2>
+    <p class="lead">単体でも、組み合わせても。現場の困りごとに合わせて選べます。各アプリは固有のカラーで色分けされ、シリーズとして見た目が統一されています。</p>
+  </div>
+  <div class="wrap">
+    <div class="products">
+
+      <!-- 計画 -->
+      <article class="prod theme-keikaku reveal">
+        <div class="badge"><svg width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="13" width="3.6" height="7" rx="1.2" fill="#fff"/><rect x="8.2" y="9.5" width="3.6" height="10.5" rx="1.2" fill="#fff"/><rect x="13.4" y="6" width="3.6" height="14" rx="1.2" fill="#fff"/><rect x="18.6" y="3.4" width="2.4" height="16.6" rx="1" fill="#fff"/></svg></div>
+        <div>
+          <div class="head"><h3>スマコウバ計画</h3><span class="en">Plan</span></div>
+          <div class="tag">生産計画・所要量・在庫の見える化</div>
+          <p class="desc">品目・図番マスタをもとに月次の生産計画を自動で組み立て。MRPによる資材所要量計算から調達先ごとの部材手配計画までをカバー。在庫月数や平準化もシミュレーションでき、ムリ・ムダのない計画づくりを支えます。</p>
+          <ul>
+            <li>生産計画の立案・平準化（レベリング）</li>
+            <li>資材所要量計算（MRP）</li>
+            <li>調達先ごとの部材手配計画</li>
+            <li>在庫月数の見える化（不足・過剰アラート）</li>
+            <li>月次計画・シミュレーション</li>
+            <li>マスタ管理・CSVで入出力</li>
+          </ul>
+          <a class="plink" href="https://www.sumakouba.com/guide/plan-excel.html">関連記事：エクセルの生産計画の属人化から抜け出す →</a>
+        </div>
+        <div class="side">
+          <div class="price">¥29,800<small>／月（税別）</small><span class="yr">年額 ¥298,000（2ヶ月分お得）</span></div>
+          <a class="open" href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
+          <a class="plink" href="https://sumakouba-production-plan.vercel.app/contact">お問い合わせ</a>
+        </div>
+      </article>
+
+      <!-- 負荷 -->
+      <article class="prod theme-fuka reveal">
+        <div class="badge"><svg width="40" height="40" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="3.4" rx="1.6" fill="#fff"/><rect x="6" y="10.3" width="12" height="3.4" rx="1.6" fill="#fff"/><rect x="8" y="15.6" width="8" height="3.4" rx="1.6" fill="#fff"/></svg></div>
+        <div>
+          <div class="head"><h3>スマコウバ負荷</h3><span class="en">Load</span></div>
+          <div class="tag">設備と人の工数（設備負荷）を見える化</div>
+          <p class="desc">月の必要数を稼働日数で割り、日々の生産計画に必要な設備負荷と工数（人員配置）を自動で計算。現場に生産管理板を置いて実績を報告しながら、可動率・不良率を見える化し、継続的な改善につなげられます。</p>
+          <ul>
+            <li>月の必要数÷稼働日で負荷・工数を自動計算</li>
+            <li>AI日程計画（スケジューリング）</li>
+            <li>生産管理板で実績報告→改善（日報）</li>
+            <li>品質管理（不良・パレート図）</li>
+            <li>月次PDFレポート・CSV／JSON入出力</li>
+          </ul>
+          <a class="plink" href="https://www.sumakouba.com/guide/load-yamazumi.html">関連記事：設備と人の負荷を山積み表で見える化する →</a>
+        </div>
+        <div class="side">
+          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
+          <a class="open" href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
+          <a class="plink" href="https://sumakouba-production-load-calc.vercel.app/contact">お問い合わせ</a>
+        </div>
+      </article>
+
+      <!-- 積載 -->
+      <article class="prod theme-sekisai reveal">
+        <div class="badge"><svg width="40" height="40" viewBox="0 0 24 24" fill="#fff"><rect x="2.5" y="7" width="11" height="8.6" rx="1.4"/><path d="M13.5 9.4h3.1l2.9 3v3.2h-6z"/><circle cx="7" cy="17.6" r="2.1"/><circle cx="16.4" cy="17.6" r="2.1"/></svg></div>
+        <div>
+          <div class="head"><h3>スマコウバ積載</h3><span class="en">Load plan</span></div>
+          <div class="tag">トラック積載の計画・可視化・指示</div>
+          <p class="desc">出荷拠点ごとの必要在庫に対して、生産したものをどれだけ送ればよいかを自動で計算。その出荷量を、どのトラックに何をどう積むかまで割り付け、荷台レイアウト図と積込チェックリストをPDFでドライバーへ共有できます。</p>
+          <ul>
+            <li>拠点別の必要在庫から出荷量を自動計算（配分）</li>
+            <li>トラック積載の自動算出（必要台数・車種）</li>
+            <li>荷台レイアウトの可視化（2段積み対応）</li>
+            <li>積込チェックリストをPDF・印刷</li>
+            <li>バーコード／QRで積込確認・誤積み防止</li>
+            <li>オフライン対応・複数端末で同期</li>
+          </ul>
+          <a class="plink" href="https://www.sumakouba.com/guide/sekisai-shiji.html">関連記事：トラックの積み込み順を指示書で可視化する →</a>
+        </div>
+        <div class="side">
+          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
+          <a class="open" href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
+          <a class="plink" href="https://sumakouba-truck-loader.vercel.app/contact">お問い合わせ</a>
+        </div>
+      </article>
+
+      <!-- 図面 -->
+      <article class="prod theme-zumen reveal">
+        <div class="badge"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5z" fill="#fff"/><path d="M14 3l5 5h-5z" fill="rgba(0,0,0,.2)"/><path d="M8 13h8M8 16h8" stroke="#21314f" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="18.6" r="1.6" fill="none" stroke="#21314f" stroke-width="1.2"/></svg></div>
+        <div>
+          <div class="head"><h3>スマコウバ図面</h3><span class="en">Drawings</span></div>
+          <div class="tag">図面・図番を端末内だけで管理（クラウド送信なし）</div>
+          <p class="desc">紙やファイルで探し回る図面管理から卒業。図面PDF・画像を読み取って図番／品名／材質などを自動入力し、キーワードで検索。過去の類似品を呼び出して見積書（PDF）もすぐ作成。図面データは端末内に保存し、クラウドには送りません。</p>
+          <ul>
+            <li>図面の読み取りで自動入力・まとめて取込（端末内OCR）</li>
+            <li>紙・ファイル管理から卒業＝キーワード検索</li>
+            <li>過去の類似品を呼び出して見積を作成</li>
+            <li>見積作成（金額・消費税を自動計算／PDF）・履歴管理</li>
+            <li>図面は端末内保存（クラウド送信なし）</li>
+          </ul>
+          <a class="plink" href="https://www.sumakouba.com/guide/zumen-offline.html">関連記事：図面をクラウドに上げず、端末内だけで管理する →</a>
+        </div>
+        <div class="side">
+          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
+          <a class="open" href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">アプリを見る →</a>
+          <a class="plink" href="https://sumakouba-zumen.vercel.app/contact.html">お問い合わせ</a>
+        </div>
+      </article>
+
+      <!-- 計測 -->
+      <article class="prod theme-keisoku reveal">
+        <div class="badge"><svg width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#fff"/><g stroke="#6d28d9" stroke-width="1.2" stroke-linecap="round"><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4"/></g><path d="M12 12l4-3" stroke="#6d28d9" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.8" fill="#6d28d9"/></svg></div>
+        <div>
+          <div class="head"><h3>スマコウバ計測</h3><span class="en">Measure</span></div>
+          <div class="tag">計測機器の台帳・校正期限アラート・貸出を一元管理</div>
+          <p class="desc">機器の型番・メーカー・保管場所・校正証明書PDFをまとめて管理。次回校正日を自動計算し、期限が近づくとアラートメールで通知。QRコードや管理番号の手入力で、誰が・どこで・何を使っているかをリアルタイムで把握できます。</p>
+          <ul>
+            <li>機器台帳・書類（取説／校正証明書PDF）管理</li>
+            <li>校正・点検期限の自動計算＋アラートメール</li>
+            <li>QR／手入力での貸出・所在管理</li>
+            <li>テプラ用ラベル印刷（QR付き）・CSV／PDF出力</li>
+            <li>1拠点・ユーザー数無制限</li>
+          </ul>
+          <a class="plink" href="https://www.sumakouba.com/guide/keisoku-calib.html">関連記事：計測機器の校正期限を忘れない一元管理術 →</a>
+        </div>
+        <div class="side">
+          <div class="price">¥19,800<small>／月（税別）</small><span class="yr">年額 ¥198,000（2ヶ月分お得）</span></div>
+          <a class="open" href="https://sumakouba-keisoku.vercel.app/login" target="_blank" rel="noopener">アプリを見る →</a>
+          <a class="plink" href="https://sumakouba-keisoku.vercel.app/contact">お問い合わせ</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- color system strip -->
+    <div class="reveal" style="margin-top:54px">
+      <span class="eyebrow">PRODUCT COLORS</span>
+      <h2 class="sec" style="font-size:clamp(1.3rem,2.4vw,1.7rem)">シリーズで統一された、製品カラー</h2>
+      <p class="lead">各アプリのアイコン・テーマカラーは下記で統一されています。同じトークンをサイトと各アプリで共有することで、シリーズとしての一貫した見た目を保ちます。</p>
+      <div class="swatches">
+        <div class="sw"><div class="top k-keikaku">計画</div><div class="meta"><div class="nm">スマコウバ計画</div><div class="hex">#2563EB</div></div></div>
+        <div class="sw"><div class="top k-fuka">負荷</div><div class="meta"><div class="nm">スマコウバ負荷</div><div class="hex">#0891B2</div></div></div>
+        <div class="sw"><div class="top k-sekisai">積載</div><div class="meta"><div class="nm">スマコウバ積載</div><div class="hex">#4F46E5</div></div></div>
+        <div class="sw"><div class="top k-zumen">図面</div><div class="meta"><div class="nm">スマコウバ図面</div><div class="hex">#3E5C8A</div></div></div>
+        <div class="sw"><div class="top k-keisoku">計測</div><div class="meta"><div class="nm">スマコウバ計測</div><div class="hex">#7C3AED</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MESSAGE ============================ -->
+<section class="band message" id="message">
+  <div class="wrap">
+    <div class="msg-card reveal">
+      <span class="eyebrow">MESSAGE</span>
+      <h2 class="sec">売る側ではなく、同じ現場の側から</h2>
+      <p>このアプリを作っているのは、いまも製造業の生産・調達の実務に身を置いている人間です。立派なIT企業でも、製造業を外から眺めるコンサルでもありません。図番と向き合い、資材を手配し、トラックの段取りに頭を悩ませる――皆さんと等身大の、同じ現場の一員です。</p>
+      <p>多機能すぎる高価なシステムは導入できず、現場の工夫と努力で「今まで耐えに耐えてきた」のが中小企業の現状ではないでしょうか。「もっと小さく、もっと安く、片手間でも回せるものが、なぜ無いんだろう」。その不満が、このアプリの出発点です。だからこそ機能は、自分たちが現場で本当に使うものだけに絞りました。</p>
+      <p>紙やホワイトボードを、いきなり全部なくす必要はありません。慣れたやり方は続けながら、必要なところだけ数字で見える化していけばいい。電波の弱い倉庫や車内、工場でも使えるように。私自身がそう使いたかったから、そう作りました。合わなければ、離れてもらって構いません。「これなら始められた」と思っていただけたら、皆さんの声を聞きながら、一緒にもっと良いものへ育てていきたいと思っています。</p>
+      <div class="sign"><span class="mark lg">ス</span>スマコウバ運営事務局 ／ 製造・調達の現場より</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRICING ============================ -->
+<section class="band tint" id="pricing">
+  <div class="wrap center reveal">
+    <span class="eyebrow">PRICING</span>
+    <h2 class="sec">料金プラン</h2>
+    <p class="lead">アプリごとに、月額／年額のシンプルな1プラン。必要なアプリだけ、単体でご契約いただけます。</p>
+  </div>
+  <div class="wrap">
+    <div class="note reveal">
+      <div>・各アプリとも、まずは<b>30日間無料</b>でお試しいただけます（お試しにクレジットカードは不要）。</div>
+      <div>・お支払いは<b>クレジットカード決済（Stripe）</b>に対応。長期契約の縛りはなく、いつでも解約できます。</div>
+      <div>・サポートは<b>メール</b>で承ります（平日日中の電話・訪問でのご対応はいたしかねます。順次ご返信します）。</div>
+      <div class="small">※ 価格はすべて税別。年額は月額の約10ヶ月分（2ヶ月分お得）。最新の料金・全機能は各アプリの料金ページをご確認ください。料金表は製品セクションの各カードに記載しています。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="band" id="faq">
+  <div class="wrap center reveal">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="sec">よくあるご質問</h2>
+    <p class="lead">導入前によくいただくご質問をまとめました。ここに無いことは、メールやLINEでお気軽にどうぞ。</p>
+  </div>
+  <div class="wrap">
+    <div class="faq">
+      <details class="reveal"><summary>1つのアプリだけ使えますか？<span class="pl"></span></summary><div class="ans">はい。気になる1つから単体でご利用いただけます。5つをまとめて導入する必要はありません。いちばん困っているところ1つから始めて、合いそうなら少しずつ広げられます。</div></details>
+      <details class="reveal"><summary>今使っているExcelや紙と併用できますか？<span class="pl"></span></summary><div class="ans">できます。いきなり全面移行ではなく、必要なものはPDFや印刷で出力できるので、今の紙・ホワイトボード・Excelの運用と併用しながら、少しずつデジタル化していけます。</div></details>
+      <details class="reveal"><summary>電波が弱い工場や倉庫でも使えますか？<span class="pl"></span></summary><div class="ans">積載と図面はオフラインに対応しており、ネットが届かない車内・倉庫・工場の奥でも表示・入力ができます。とくに図面はデータを端末の外に出さないため、情報漏えいの不安も小さく抑えられます。</div></details>
+      <details class="reveal"><summary>料金と支払い方法を教えてください。<span class="pl"></span></summary><div class="ans">アプリごとの月額／年額の明朗な定額制です（多くのアプリは月額1万9,800円、計画は月額2万9,800円・いずれも税別）。大きな初期費用や導入費はかかりません。お支払いはクレジットカード決済（Stripe）に対応しています。</div></details>
+      <details class="reveal"><summary>無料で試せますか？解約はできますか？<span class="pl"></span></summary><div class="ans">はい。登録するだけで30日間無料でお試しいただけます（お試しにクレジットカードは不要）。長期契約の縛りはなく、合わなければいつでも解約できます。</div></details>
+      <details class="reveal"><summary>パソコンが苦手でも導入できますか？<span class="pl"></span></summary><div class="ans">難しい初期設定やサーバーの用意は不要です。導入の手順をアプリの標準機能として用意しているので、画面に沿って進めるだけで使い始められます。スマホやタブレットがあれば、いつもの担当者がそのまま手に取れる操作感です。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <span class="eyebrow on-dark">CONTACT</span>
+    <h2 class="sec">導入のご相談・お問い合わせはお気軽に</h2>
+    <p class="lead">いちばん手軽なのは LINE です。友だち追加してメッセージを送るだけ。料金やお試し、どのアプリが合うかなど、お気軽にどうぞ。</p>
+    <div style="margin-top:26px">
+      <a class="line-btn" href="https://line.me/R/ti/p/%40926yxdlw" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.7.2.8.5.1.3 0 .7 0 1l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.4C20.7 14.6 22 12.9 22 11c0-4.4-4.5-8-10-8z"/></svg>
+        LINEで相談する（友だち追加）
+      </a>
+    </div>
+    <p class="lead" style="margin-top:30px;font-size:.92rem">または、各アプリのお問い合わせフォームから：</p>
+    <div class="contact-apps">
+      <a href="https://sumakouba-production-plan.vercel.app/contact"><span class="d k-keikaku"></span>計画｜Excel頼み・欠品をなくしたい</a>
+      <a href="https://sumakouba-production-load-calc.vercel.app/contact"><span class="d k-fuka"></span>負荷｜設備と人の負荷を見える化したい</a>
+      <a href="https://sumakouba-truck-loader.vercel.app/contact"><span class="d k-sekisai"></span>積載｜拠点への配分・積載を自動化したい</a>
+      <a href="https://sumakouba-zumen.vercel.app/contact.html"><span class="d k-zumen"></span>図面｜あの図面どこ？検索と見積</a>
+      <a href="https://sumakouba-keisoku.vercel.app/contact"><span class="d k-keisoku"></span>計測｜校正期限を切らさず管理したい</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer id="company">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fbrand"><span class="mark">ス</span>スマコウバ</div>
+        <p style="max-width:34ch">中小製造業の現場を、データで支える。運営：スマコウバ運営事務局。中小製造業向け業務アプリ「スマコウバ」シリーズ（計画・負荷・積載・図面・計測）の開発・運営。</p>
+      </div>
+      <div class="fcols">
+        <h5>製品</h5>
+        <a href="https://sumakouba-production-plan.vercel.app">スマコウバ計画</a>
+        <a href="https://sumakouba-production-load-calc.vercel.app">スマコウバ負荷</a>
+        <a href="https://sumakouba-truck-loader.vercel.app">スマコウバ積載</a>
+        <a href="https://sumakouba-zumen.vercel.app">スマコウバ図面</a>
+        <a href="https://sumakouba-keisoku.vercel.app">スマコウバ計測</a>
+      </div>
+      <div class="fcols">
+        <h5>お役立ち情報</h5>
+        <a href="https://www.sumakouba.com/guide/keisoku-calib.html">計測機器の校正期限管理</a>
+        <a href="https://www.sumakouba.com/guide/zumen-offline.html">図面をクラウドに上げず管理</a>
+        <a href="https://www.sumakouba.com/guide/sekisai-shiji.html">トラック積み込み順の指示</a>
+        <a href="https://www.sumakouba.com/guide/plan-excel.html">生産計画の脱エクセル・属人化</a>
+        <a href="https://www.sumakouba.com/guide/load-yamazumi.html">設備負荷の見える化・山積み</a>
+      </div>
+      <div class="fcols">
+        <h5>サイト内</h5>
+        <a href="#products">製品</a>
+        <a href="#pricing">料金</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="https://www.sumakouba.com/tokushoho.html">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 スマコウバ運営事務局</span>
+      <span>製造・調達の現場より</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* scroll reveal */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
 </body>
 </html>
