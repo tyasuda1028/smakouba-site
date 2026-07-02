@@ -63,6 +63,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pc-only { display: inline; }
+.nb { white-space: nowrap; } /* 語中改行の防止（例: 見出しの「道具を。」） */
 
 /* ===== Buttons ===== */
 .btn {
