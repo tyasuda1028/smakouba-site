@@ -7,3 +7,6 @@ Thumbs.db
 .idea/
 *.swp
 .vercel
+
+# 内部メモ（サイトに配信しない）
+CUSTOM_DOMAIN.md
