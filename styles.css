@@ -363,6 +363,8 @@ img { max-width: 100%; display: block; }
 .accent-cyan { --accent: linear-gradient(90deg, #1fc8e3, #0891b2); --accent-solid: #0e7490; } /* 負荷 teal (text=濃いめでAA確保) */
 .accent-teal { --accent: linear-gradient(90deg, #46638f, #3e5c8a); --accent-solid: #3e5c8a; } /* 図面 navy */
 .accent-amber { --accent: linear-gradient(90deg, #9b6cf8, #7c3aed); --accent-solid: #7c3aed; } /* 計測 violet */
+.accent-orange { --accent: linear-gradient(90deg, #fb923c, #ea580c); --accent-solid: #c2410c; } /* 設備 orange (text=濃いめでAA確保) */
+.accent-emerald { --accent: linear-gradient(90deg, #34d399, #059669); --accent-solid: #047857; } /* 品質 emerald (text=濃いめでAA確保) */
 
 .product-icon {
   width: 56px; height: 56px;
