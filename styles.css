@@ -950,3 +950,214 @@ img { max-width: 100%; display: block; }
 .footer-bottom small a:hover { color: #fff; }
 /* 特商法など法務ページのテーブル微調整 */
 .legal-table { margin-top: 8px; }
+
+/* ===================================================================
+   Redesign v2 — JUST.DB風の構成要素（ラインナップ / 3本柱 / ユースケース / 3ステップ）
+   =================================================================== */
+
+/* --- Lineup band（8アプリを一目で） --- */
+.lineup { padding: 46px 0; background: var(--bg-soft); border-bottom: 1px solid var(--line); }
+.lineup-head { text-align: center; margin: 0 0 26px; }
+.lineup-head p { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: .14em; color: var(--muted); }
+.lineup-head strong { color: var(--blue); }
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.lineup-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 16px 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.lineup-chip:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--accent-solid, var(--blue)) 40%, var(--line)); }
+.lineup-ic {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  color: #fff;
+  background: var(--accent, var(--grad));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 5px 12px color-mix(in srgb, var(--accent-solid, var(--blue)) 28%, transparent);
+}
+.lineup-ic svg { width: 22px; height: 22px; }
+.lineup-chip span { font-size: 13px; font-weight: 800; color: var(--ink); letter-spacing: .01em; }
+.lineup-chip small { font-size: 10.5px; color: var(--muted); font-weight: 700; margin-top: -4px; }
+
+/* --- Why: 3本柱 --- */
+.pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pillar {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 30px 30px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s cubic-bezier(.22,.61,.36,1), box-shadow .25s ease, border-color .25s ease;
+  overflow: hidden;
+}
+.pillar::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad); }
+.pillar:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--blue) 26%, transparent); }
+.pillar-ic {
+  width: 54px; height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eef2ff, #e6f7fb);
+  border: 1px solid #e0e7ff;
+  display: grid; place-items: center;
+  margin: 0 0 18px;
+  color: var(--blue);
+}
+.pillar-ic svg { width: 27px; height: 27px; }
+.pillar h3 { font-size: 19px; font-weight: 900; margin: 0 0 10px; letter-spacing: .01em; line-height: 1.45; }
+.pillar > p { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 16px; }
+.pillar-points { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 16px; }
+.pillar-points li { position: relative; padding-left: 24px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; }
+.pillar-points li::before {
+  content: ""; position: absolute; left: 0; top: 3px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: rgba(37,99,235,.12);
+}
+.pillar-points li::after {
+  content: ""; position: absolute; left: 4px; top: 7px; width: 8px; height: 8px;
+  background: var(--blue);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* --- Usecase: 困りごと → 効くアプリ --- */
+.usecase-lead { text-align: center; max-width: 720px; margin: 44px auto 30px; }
+.usecase-lead h3 { font-size: clamp(19px, 2.6vw, 23px); font-weight: 900; margin: 0 0 8px; }
+.usecase-lead p { font-size: 15px; color: var(--muted); margin: 0; }
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.usecase-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.usecase-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--accent-solid, var(--blue)) 34%, var(--line)); }
+.usecase-quote { flex: 1; font-size: 14.5px; color: var(--ink); font-weight: 700; line-height: 1.65; }
+.usecase-quote small { display: block; font-size: 12.5px; color: var(--muted); font-weight: 600; margin-top: 3px; }
+.usecase-app {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12.5px; font-weight: 800;
+  color: var(--accent-solid, var(--blue));
+  background: color-mix(in srgb, var(--accent-solid, var(--blue)) 8%, #fff);
+  border: 1px solid color-mix(in srgb, var(--accent-solid, var(--blue)) 26%, transparent);
+  border-radius: 999px;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+.usecase-app::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--accent, var(--grad)); flex-shrink: 0; }
+
+/* --- Steps: 使い方3ステップ --- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 940px; margin: 0 auto; position: relative; }
+.step {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 26px 28px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.step-num {
+  width: 46px; height: 46px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--grad);
+  color: #fff;
+  font-size: 20px; font-weight: 900;
+  box-shadow: 0 8px 20px rgba(37,99,235,.35), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.step h3 { font-size: 17px; font-weight: 900; margin: 0 0 8px; }
+.step p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.75; }
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 56px; right: -16px;
+  width: 20px; height: 20px;
+  border-top: 2px solid #cbd5e1;
+  border-right: 2px solid #cbd5e1;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+.steps-note { text-align: center; font-size: 13.5px; color: var(--muted); margin: 26px 0 0; }
+
+/* --- Responsive for v2 --- */
+@media (max-width: 900px) {
+  .lineup-grid { grid-template-columns: repeat(4, 1fr); max-width: 460px; }
+  .pillar-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .steps { grid-template-columns: 1fr; max-width: 460px; }
+  .step:not(:last-child)::after { top: auto; right: 50%; bottom: -16px; transform: translateX(50%) rotate(135deg); }
+}
+@media (max-width: 720px) {
+  .usecase-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .usecase-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 480px) {
+  .lineup-grid { grid-template-columns: repeat(2, 1fr); max-width: 300px; }
+}
+
+/* --- 関連記事・お役立ち記事（guide cards） --- */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.guide-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px 22px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform .25s cubic-bezier(.22,.61,.36,1), box-shadow .25s ease, border-color .25s ease;
+}
+.guide-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent, var(--grad)); }
+.guide-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent-solid, var(--blue)) 26%, transparent); }
+.guide-tag {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 800;
+  color: var(--accent-solid, var(--blue));
+  background: color-mix(in srgb, var(--accent-solid, var(--blue)) 8%, #fff);
+  border: 1px solid color-mix(in srgb, var(--accent-solid, var(--blue)) 24%, transparent);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin: 0 0 14px;
+}
+.guide-tag::before { content: ""; width: 8px; height: 8px; border-radius: 2.5px; background: var(--accent, var(--grad)); flex-shrink: 0; }
+.guide-card h3 { font-size: 16.5px; font-weight: 800; margin: 0 0 10px; line-height: 1.55; letter-spacing: .01em; color: var(--ink); }
+.guide-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.75; flex: 1; }
+.guide-read { margin-top: auto; font-size: 13.5px; font-weight: 800; color: var(--accent-solid, var(--blue)); }
+.guide-card:hover .guide-read { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 900px) { .guide-grid { grid-template-columns: repeat(2, 1fr); max-width: 620px; } }
+@media (max-width: 560px) { .guide-grid { grid-template-columns: 1fr; max-width: 420px; } }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>在庫管理アプリで棚卸・入出庫を効率化｜スマコウバ在庫管理</title>
+  <meta name="description" content="在庫が合わない、棚卸に丸一日かかる、どこに何があるか分からない。中小製造業の在庫の悩みを、QRスキャンの入出庫と時系列の受払記録で立て直す考え方と、スマコウバ在庫管理の実機能を紹介します。" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://www.sumakouba.com/guide/zaiko-kanri.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.sumakouba.com/guide/zaiko-kanri.html" />
+  <meta property="og:title" content="在庫管理アプリで棚卸・入出庫を効率化｜スマコウバ在庫管理" />
+  <meta property="og:description" content="在庫が合わない、棚卸に丸一日かかる、どこに何があるか分からない。中小製造業の在庫の悩みを、QRスキャンの入出庫と時系列の受払記録で立て直す考え方と、スマコウバ在庫管理の実機能を紹介します。" />
+  <meta property="og:site_name" content="スマコウバ" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://www.sumakouba.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.sumakouba.com/og-image.png" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "在庫が合わない・棚卸に丸一日。中小製造業の在庫をQRと受払記録で立て直す",
+      "description": "在庫が合わない、棚卸に丸一日かかる、どこに何があるか分からない。中小製造業の在庫の悩みを、QRスキャンの入出庫と時系列の受払記録で立て直す考え方と、スマコウバ在庫管理の実機能を紹介します。",
+      "inLanguage": "ja",
+      "datePublished": "2026-07-05",
+      "dateModified": "2026-07-05",
+      "mainEntityOfPage": "https://www.sumakouba.com/guide/zaiko-kanri.html",
+      "image": "https://www.sumakouba.com/og-image.png",
+      "author": { "@type": "Organization", "name": "スマコウバ運営事務局" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "スマコウバ",
+        "logo": { "@type": "ImageObject", "url": "https://www.sumakouba.com/og-image.png" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://www.sumakouba.com/" },
+        { "@type": "ListItem", "position": 2, "name": "在庫が合わない・棚卸に丸一日。中小製造業の在庫をQRと受払記録で立て直す", "item": "https://www.sumakouba.com/guide/zaiko-kanri.html" }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="スマコウバ ホーム"><span class="brand-logo" aria-hidden="true"><svg viewBox="0 0 100 100" width="36" height="36" role="img"><defs><linearGradient id="hdr-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="0.5" stop-color="#2563eb"/><stop offset="1" stop-color="#0891b2"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#hdr-grad)"/><text x="47" y="72" text-anchor="middle" fill="#fff" font-size="68" font-weight="900" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">ス</text></svg></span><span class="brand-name">スマコウバ</span></a>
+      <nav class="nav" id="nav">
+        <a href="/#products">製品</a><a href="/#features">特長</a><a href="/#steps">使い方</a><a href="/#pricing">料金</a><a href="/#faq">FAQ</a>
+        <a href="/#contact" class="nav-cta">お問い合わせ</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article container">
+      <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a> <span aria-hidden="true">›</span> <a href="/#guide">お役立ち情報</a></nav>
+      <header class="article-head">
+        <p class="eyebrow">スマコウバ在庫管理</p>
+        <h1>在庫が合わない・棚卸に丸一日。中小製造業の在庫をQRと受払記録で立て直す</h1>
+      </header>
+      <div class="article-body">
+<p>「帳簿では10個あるはずなのに、棚には7個しかない」「棚卸に丸一日かかって、それでも数字が合わない」。中小製造業の現場では、こうした在庫のズレが毎月のように起きています。材料も、仕掛品も、完成品も、気づけばあちこちの棚に散らばっていて、どこに何がいくつあるのか、結局その場所を一番よく知っている人に聞かないと分からない。そんな運用は少なくありません。</p>
+<p>在庫が合わない原因の多くは、「入れた」「出した」という動きがその場で記録として残らないことにあります。伝票は後回し、Excelは月末にまとめて入力、結果として現物と数字が少しずつずれていく。ここでは、なぜ在庫管理がこれほど大変になるのかを整理したうえで、QRと受払記録を軸にした解決の考え方と、スマコウバ在庫管理でどう実現できるのかをご紹介します。</p>
+<h2>なぜ在庫管理はこんなに大変なのか</h2>
+<p>在庫の管理が難しくなるのは、機能が足りないからというより、日々の「動き」をその瞬間に記録として残す仕組みがないからです。現場の困りごとを並べてみると、根っこは一つにつながっています。</p>
+<ul>
+<li><strong>在庫が合わない</strong>：入出庫がその場で記録されず、後からまとめて入力するため、抜けや二重計上が起きる。</li>
+<li><strong>棚卸に丸一日</strong>：紙のリストを片手に棚を回り、数え、後でExcelに転記し、差異を追いかける。人手も時間もかかる。</li>
+<li><strong>どこに何があるか分からない</strong>：棚に住所がなく、置き場所が人の記憶頼み。担当者が休むと探し回ることになる。</li>
+<li><strong>誤出荷</strong>：似た品番、似た荷姿。目視だけの照合では、違う品物を出してしまうことがある。</li>
+<li><strong>受払の記録が残らない</strong>：いつ・誰が・何を・いくつ動かしたのかがたどれず、ズレの原因を後から突き止められない。</li>
+</ul>
+<p>これらは別々の問題に見えて、実は「現物の動きが、その瞬間に正しく記録されていない」という一点に集約されます。逆に言えば、ここさえ押さえれば、他の悩みは連鎖的にほどけていきます。</p>
+<h2>解決の考え方：現品・場所・記録をそろえる</h2>
+<p>在庫を立て直す鍵は、大がかりなシステムを入れることではありません。次の三つをそろえるだけで、ズレはぐっと減らせます。</p>
+<h3>現品にQRを、棚に住所を</h3>
+<p>品物一つひとつに在庫管理キーを持たせ、棚には「エリア-棚-段-間口」のような場所コードを振る。現品と場所の両方がコードで指させるようになると、「どこに何があるか」を記録として残せるようになります。</p>
+<h3>動かした瞬間に記録する</h3>
+<p>入庫・出庫・移動・調整を、後回しにせずその場でQRスキャンして記録する。現在庫の数字と、動きの証跡ログを同時に更新すれば、数字と現物が離れていきません。</p>
+<h3>数える作業を、たどれる作業に変える</h3>
+<p>棚卸も出荷も、記録が積み重なっていれば「たどる」だけで済みます。時系列の受払があれば、差異が出たときにどこで狂ったのかを後から追えます。</p>
+<h2>スマコウバ在庫管理でどう解決するか</h2>
+<p>スマコウバ在庫管理は、ブラウザで使える中小製造業向けの在庫管理アプリです。上でお話しした「現品・場所・記録」を、そのまま現場の道具に落とし込んでいます。</p>
+<h3>マスタとロケーションで棚に住所をつける</h3>
+<p>商品マスタには図番・商品CD・在庫管理キー・仕入先・ロットサイズ(荷姿)・安全在庫を登録できます。ロケーションは「A-01-3-2」のようなエリア-棚-段-間口で管理し、範囲を指定して一括で自動採番できます。商品ラベル(QR)・入荷現品票(50×35mm)・ロケラベルを発行でき、SATOのラベルプリンターでの出力を想定しています。棚と現品の両方にQRが貼られることで、探す作業が「読み取る作業」に変わります。</p>
+<h3>QRスキャンの入出庫で、その場で受払を残す</h3>
+<p>入庫・出庫・移動・調整を、スマホやタブレットのカメラでQRを読み取って記録します。読み取ると現在庫(在庫の正)と証跡ログをまとめて更新するため、数字と動きが常に一致します。マイナス在庫は既定で拒否されるので、ありえない出庫を防げます。入荷は「受入(未入庫として保持)」と「棚入れ(ロケを付与してFIFOで消し込む)」の二段階に分かれ、まだ棚に入っていないものは出荷対象になりません。動きはすべて受払履歴として時系列で残り、CSVに出力できます。</p>
+<h3>出庫指示と3点照合で誤出荷を防ぐ</h3>
+<p>出庫は、伝票と明細から在庫の多いロケを自動で引き当て、ロケが近い順に並んだピッキングリストを印刷できます。出庫は行ごとでも一括でも行えます。さらに誤出荷を防ぐため、指示リストのQR・商品ラベルのQR・ロケラベルのQRという3点をスキャンして照合し、すべて一致したときだけ出庫が確定する仕組みを用意しています。目視に頼らず、違う品物や違う棚をその場で弾けます。</p>
+<h3>棚卸とアラートで、月末の負担を軽くする</h3>
+<p>棚卸は、指示を出して記入リストをつくり、実棚を入力し、差異を確認して在庫に反映するという流れをそのままなぞれます。紙のリストと転記の往復がなくなります。安全在庫を下回るとアラートがメールで届くので、欠品に気づくのが遅れる心配も減らせます。</p>
+<h2>今の運用と併用して、小さく始める</h2>
+<p>すべてを一度に切り替える必要はありません。今使っているExcelや紙の帳簿はそのまま残しながら、たとえば「動きの多い一つのエリアだけQRで入出庫を記録する」といった、気になる1つから小さく始められます。まずは商品マスタとロケーションを整えて、そのエリアの受払だけをアプリに残してみる。数字が合ってくる手応えを確かめてから、対象を少しずつ広げていけば十分です。</p>
+<p>支払いはクレジットカード決済で、料金は月額の明朗な定額です。困ったときのサポートはメールで受け付けています。登録するだけで30日間無料で試せるので、自分の現場の棚と品物で、まずは動きを確かめてみてください。</p>
+<h2>まとめ</h2>
+<p>在庫が合わない、棚卸に丸一日、どこに何があるか分からない、誤出荷が怖い。これらの悩みは、現物の動きをその場で記録できていないところから生まれます。解決の鍵は、現品と棚にQRという住所を与え、動かした瞬間に入出庫を記録し、受払としてたどれるようにする三つをそろえること。今のやり方を捨てずに、気になるエリアや品物から小さく始めてみてください。スマコウバ在庫管理は、その一歩を現場の道具として支えます。</p>
+      </div>
+      <aside class="article-cta accent-fuchsia">
+        <h2>在庫のズレと棚卸の負担を減らすなら「スマコウバ在庫管理」</h2>
+        <p>QRスキャンの入出庫、3点照合の出庫、時系列の受払記録まで、中小製造業の現場に必要な機能をブラウザひとつで。登録するだけで30日間無料で試せます。</p>
+        <div class="article-cta-actions">
+          <a class="btn btn-primary" href="https://sumakouba-zaiko.vercel.app/login" target="_blank" rel="noopener">スマコウバ在庫管理を見る</a>
+          <a class="btn btn-ghost" href="/#contact">お問い合わせ</a>
+        </div>
+      </aside>
+      <p class="article-back"><a href="/">← スマコウバのトップへ戻る</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="brand-name">スマコウバ</span><p>中小製造業の現場を、データで支える。</p></div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>製品</h4>
+          <a href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">スマコウバ生産計画</a>
+          <a href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">スマコウバ生産日報</a>
+          <a href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">スマコウバ出荷積載</a>
+          <a href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">スマコウバ図面管理</a>
+          <a href="https://sumakouba-keisoku.vercel.app" target="_blank" rel="noopener">スマコウバ計測機器</a>
+          <a href="https://sumakouba-setsubi.vercel.app" target="_blank" rel="noopener">スマコウバ設備管理</a>
+          <a href="https://sumakouba-hinshitsu.vercel.app" target="_blank" rel="noopener">スマコウバ品質管理</a>
+          <a href="https://sumakouba-zaiko.vercel.app" target="_blank" rel="noopener">スマコウバ在庫管理</a></div>
+        <div class="footer-col"><h4>サイト内</h4>
+          <a href="/#products">製品</a><a href="/#pricing">料金</a><a href="/#faq">FAQ</a><a href="/#guide">関連記事</a><a href="/#contact">お問い合わせ</a></div>
+        <div class="footer-col"><h4>お役立ち情報</h4>
+          <a href="/guide/plan-excel.html">生産計画の脱エクセル・属人化</a>
+          <a href="/guide/load-yamazumi.html">設備負荷の見える化・山積み</a>
+          <a href="/guide/sekisai-shiji.html">トラック積み込み順の指示</a>
+          <a href="/guide/zumen-offline.html">図面をクラウドに上げず管理</a>
+          <a href="/guide/keisoku-calib.html">計測機器の校正期限管理</a>
+          <a href="/guide/setsubi-tenken.html">設備台帳と点検記録の一元化</a>
+          <a href="/guide/zaiko-kanri.html">在庫のQR入出庫・棚卸</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom"><small>© <span id="year">2026</span> スマコウバ運営事務局</small></div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
