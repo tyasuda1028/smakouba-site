@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>品質チェック記録をデジタル化｜QC工程表と自動判定で検査を立て直す｜スマコウバ品質管理</title>
+  <meta name="description" content="検査記録が紙のチェックシートで散らばる、規格値がベテランの頭の中、NGの連絡が遅れる。中小製造業の品質記録の悩みを、QC工程表と測定値の自動OK/NG判定で立て直す考え方と、スマコウバ品質管理の実機能を紹介します。" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://www.sumakouba.com/guide/hinshitsu-qc.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.sumakouba.com/guide/hinshitsu-qc.html" />
+  <meta property="og:title" content="品質チェック記録をデジタル化｜QC工程表と自動判定で検査を立て直す｜スマコウバ品質管理" />
+  <meta property="og:description" content="検査記録が紙のチェックシートで散らばる、規格値がベテランの頭の中、NGの連絡が遅れる。中小製造業の品質記録の悩みを、QC工程表と測定値の自動OK/NG判定で立て直す考え方と、スマコウバ品質管理の実機能を紹介します。" />
+  <meta property="og:site_name" content="スマコウバ" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://www.sumakouba.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.sumakouba.com/og-image.png" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "検査記録が紙でバラバラ・規格値は頭の中。品質チェックをQC工程表と自動判定で立て直す",
+      "description": "検査記録が紙のチェックシートで散らばる、規格値がベテランの頭の中、NGの連絡が遅れる。中小製造業の品質記録の悩みを、QC工程表と測定値の自動OK/NG判定で立て直す考え方と、スマコウバ品質管理の実機能を紹介します。",
+      "inLanguage": "ja",
+      "datePublished": "2026-07-10",
+      "dateModified": "2026-07-10",
+      "mainEntityOfPage": "https://www.sumakouba.com/guide/hinshitsu-qc.html",
+      "image": "https://www.sumakouba.com/og-image.png",
+      "author": { "@type": "Organization", "name": "スマコウバ運営事務局" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "スマコウバ",
+        "logo": { "@type": "ImageObject", "url": "https://www.sumakouba.com/og-image.png" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://www.sumakouba.com/" },
+        { "@type": "ListItem", "position": 2, "name": "検査記録が紙でバラバラ・規格値は頭の中。品質チェックをQC工程表と自動判定で立て直す", "item": "https://www.sumakouba.com/guide/hinshitsu-qc.html" }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="スマコウバ ホーム"><span class="brand-logo" aria-hidden="true"><svg viewBox="0 0 100 100" width="36" height="36" role="img"><defs><linearGradient id="hdr-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="0.5" stop-color="#2563eb"/><stop offset="1" stop-color="#0891b2"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#hdr-grad)"/><text x="47" y="72" text-anchor="middle" fill="#fff" font-size="68" font-weight="900" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">ス</text></svg></span><span class="brand-name">スマコウバ</span></a>
+      <nav class="nav" id="nav">
+        <a href="/#products">製品</a><a href="/#features">特長</a><a href="/#steps">使い方</a><a href="/#pricing">料金</a><a href="/#faq">FAQ</a>
+        <a href="/#contact" class="nav-cta">お問い合わせ</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article container">
+      <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a> <span aria-hidden="true">›</span> <a href="/#guide">お役立ち情報</a></nav>
+      <header class="article-head">
+        <p class="eyebrow">スマコウバ品質管理</p>
+        <h1>検査記録が紙でバラバラ・規格値は頭の中。品質チェックをQC工程表と自動判定で立て直す</h1>
+      </header>
+      <div class="article-body">
+<p>「検査のチェックシートが現場のバインダーに溜まっていくだけで、あとから探せない」「寸法の規格値は、結局あの人に聞かないと分からない」「NGが出たのに、報告が上がってきたのは翌日だった」。中小製造業の品質管理では、こうした場面が珍しくありません。検査そのものは毎日きちんとやっているのに、その記録が紙のまま散らばっていて、品質の証拠として活かせない。取引先から検査成績の提出を求められるたびに、紙をめくってExcelに打ち直す。そんな運用になりがちです。</p>
+<p>品質記録が活きない原因の多くは、「何を・どの規格で・どの頻度で検査するか」という決めごとと、「実際に測った値」がつながっていないことにあります。ここでは、なぜ品質チェックの記録がこれほど大変になるのかを整理したうえで、QC工程表を軸にした解決の考え方と、スマコウバ品質管理でどう実現できるのかをご紹介します。</p>
+<h2>なぜ品質チェックの記録はこんなに大変なのか</h2>
+<p>検査の手を抜いているわけではないのに記録が活きないのは、決めごとと記録がバラバラの場所にあるからです。現場の困りごとを並べてみると、根っこは一つにつながっています。</p>
+<ul>
+<li><strong>チェックシートが散らばる</strong>：紙の検査記録が品番ごと・ラインごとのバインダーに溜まり、後から特定のロットの記録を探すのに時間がかかる。</li>
+<li><strong>規格値が人の頭の中</strong>：図面や規格書はあるが、現場で「この寸法はどこまでOKか」がすぐ分からず、ベテランの記憶に頼る。</li>
+<li><strong>判定のばらつき</strong>：測った値が規格内かどうかをその場で人が判断するため、見落としや判定ミスが起きる。</li>
+<li><strong>NGの連絡が遅い</strong>：不適合が出ても、報告が紙や口頭で伝わるため、対応が始まるまでに時間が空く。</li>
+<li><strong>帳票づくりが二度手間</strong>：取引先への提出や監査のたびに、紙の記録をExcelに転記してQC工程表や検査成績書を作り直す。</li>
+</ul>
+<p>これらは別々の問題に見えて、「検査の決めごと（QC工程表）と、日々の測定記録が、同じ場所でつながっていない」という一点に集約されます。逆に言えば、ここさえ押さえれば、探す・迷う・転記するの多くはなくせます。</p>
+<h2>解決の考え方：決めごとを一枚にまとめ、記録をその場でつなぐ</h2>
+<p>品質記録を立て直す鍵は、大がかりな品質システムを入れることではありません。次の三つをそろえるだけで、日々の検査は着実に変わります。</p>
+<h3>QC工程表を「生きた台帳」にする</h3>
+<p>工程の流れごとに、管理項目・規格値（上下限）・検査頻度を一枚にまとめる。紙の掲示ではなく、現場がその場で参照して検査に使える形にしておくことで、規格値が人の記憶から台帳へ移ります。</p>
+<h3>測った瞬間に判定まで終わらせる</h3>
+<p>測定値を入力したその場で、規格と突き合わせてOK/NGが決まるようにする。判定を人の暗算に頼らなければ、ばらつきも見落としも起きにくくなります。</p>
+<h3>NGはその場で知らせ、証跡を残す</h3>
+<p>不適合が出たら、その場で関係者に通知が飛び、写真などの証跡と一緒に記録される。連絡の遅れがなくなり、あとから「いつ・何が・どうNGだったか」をたどれます。</p>
+<h2>スマコウバ品質管理でどう解決するか</h2>
+<p>スマコウバ品質管理は、ブラウザで使える中小製造業向けの品質チェック記録アプリです。上でお話しした「決めごとと記録をつなぐ」を、そのまま現場の道具に落とし込んでいます。</p>
+<h3>QC工程表で決めごとを一元管理する</h3>
+<p>品番ごとに、工程のフロー・管理項目・規格値（上下限）・検査頻度をQC工程表として登録できます。現場はその工程表にもとづいて、フロー順に検査を進めるだけ。QC工程表と検査手順書はそのまま帳票PDFとして出力できるので、取引先への提出や社内の掲示のために作り直す必要がありません。</p>
+<h3>測定値を入れると自動でOK/NG判定</h3>
+<p>検査では、測定値を入力するとその場で規格値と照合され、OK/NGが自動で判定されます。Bluetooth測定器からの測定値の取り込み（PC／Android）にも対応しているので、ノギスやマイクロメータの値を手で書き写す手間と転記ミスを減らせます。</p>
+<h3>NGは写真つきで即時メール通知</h3>
+<p>不適合が出ると、その場で担当者へメールで通知されます。不具合箇所の写真や動画を証跡として残せるので、「どの程度のNGだったのか」が言葉だけに頼らず伝わります。対応の初動が早くなり、記録もそのまま残ります。</p>
+<h3>承認ワークフローとCSVで、記録を「使える証拠」に</h3>
+<p>検査記録は承認・差し戻しのワークフローで回せるため、責任者の確認まで含めて記録になります。蓄積した記録はCSVで出力できるので、監査対応や社内の分析にもそのまま使えます。</p>
+<h2>今の運用と併用して、小さく始める</h2>
+<p>すべての品番を一度に載せ替える必要はありません。紙のチェックシートはそのまま残しながら、たとえば「検査項目が多い品番を一つだけQC工程表に登録して、その検査だけアプリで記録する」といった、気になる1つから小さく始められます。自動判定と通知の手応えを確かめてから、対象の品番を少しずつ広げていけば十分です。</p>
+<p>支払いはクレジットカード決済で、料金は月額の明朗な定額です。困ったときのサポートはメールで受け付けています。登録するだけで30日間無料で試せるので、自分の現場の品番と規格値で、まずは一つの検査から確かめてみてください。</p>
+<h2>まとめ</h2>
+<p>チェックシートが散らばる、規格値が人の頭の中、判定がばらつく、NGの連絡が遅れる、帳票づくりが二度手間。これらの悩みは、検査の決めごとと日々の記録がつながっていないところから生まれます。解決の鍵は、QC工程表を生きた台帳にし、測った瞬間に自動で判定し、NGをその場で通知して証跡ごと残すこと。今のやり方を捨てずに、気になる品番の一つから小さく始めてみてください。スマコウバ品質管理は、その一歩を現場の道具として支えます。</p>
+      </div>
+      <aside class="article-cta accent-emerald">
+        <h2>品質チェックの記録と判定を立て直すなら「スマコウバ品質管理」</h2>
+        <p>QC工程表の一元管理、測定値の自動OK/NG判定、NGの即時メール通知、帳票PDFまで、中小製造業の現場に必要な機能をブラウザひとつで。登録するだけで30日間無料で試せます。</p>
+        <div class="article-cta-actions">
+          <a class="btn btn-primary" href="https://sumakouba-hinshitsu.vercel.app/login" target="_blank" rel="noopener">スマコウバ品質管理を見る</a>
+          <a class="btn btn-ghost" href="/#contact">お問い合わせ</a>
+        </div>
+      </aside>
+      <p class="article-back"><a href="/">← スマコウバのトップへ戻る</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="brand-name">スマコウバ</span><p>中小製造業の現場を、データで支える。</p></div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>製品</h4>
+          <a href="https://sumakouba-production-plan.vercel.app" target="_blank" rel="noopener">スマコウバ生産計画</a>
+          <a href="https://sumakouba-production-load-calc.vercel.app" target="_blank" rel="noopener">スマコウバ生産日報</a>
+          <a href="https://sumakouba-truck-loader.vercel.app" target="_blank" rel="noopener">スマコウバ出荷積載</a>
+          <a href="https://sumakouba-zumen.vercel.app" target="_blank" rel="noopener">スマコウバ図面管理</a>
+          <a href="https://sumakouba-keisoku.vercel.app" target="_blank" rel="noopener">スマコウバ計測機器</a>
+          <a href="https://sumakouba-setsubi.vercel.app" target="_blank" rel="noopener">スマコウバ設備管理</a>
+          <a href="https://sumakouba-hinshitsu.vercel.app" target="_blank" rel="noopener">スマコウバ品質管理</a>
+          <a href="https://sumakouba-zaiko.vercel.app" target="_blank" rel="noopener">スマコウバ在庫管理</a></div>
+        <div class="footer-col"><h4>サイト内</h4>
+          <a href="/#products">製品</a><a href="/#pricing">料金</a><a href="/#faq">FAQ</a><a href="/#guide">関連記事</a><a href="/#contact">お問い合わせ</a></div>
+        <div class="footer-col"><h4>お役立ち情報</h4>
+          <a href="/guide/plan-excel.html">生産計画の脱エクセル・属人化</a>
+          <a href="/guide/load-yamazumi.html">設備負荷の見える化・山積み</a>
+          <a href="/guide/sekisai-shiji.html">トラック積み込み順の指示</a>
+          <a href="/guide/zumen-offline.html">図面をクラウドに上げず管理</a>
+          <a href="/guide/keisoku-calib.html">計測機器の校正期限管理</a>
+          <a href="/guide/setsubi-tenken.html">設備台帳と点検記録の一元化</a>
+          <a href="/guide/hinshitsu-qc.html">品質チェック記録のデジタル化</a>
+          <a href="/guide/zaiko-kanri.html">在庫のQR入出庫・棚卸</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom"><small>© <span id="year">2026</span> スマコウバ運営事務局</small></div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
